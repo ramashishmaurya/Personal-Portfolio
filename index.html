@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Portfolio | Dark Theme</title>
+    <title>Ashish Maurya | Python & AI Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -35,21 +35,13 @@
             transition: width 0.3s ease;
         }
         
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        
-        .active-nav::after {
+        .nav-link:hover::after, .active-nav::after {
             width: 100%;
         }
         
         @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
         
         .floating {
@@ -59,23 +51,26 @@
         .section {
             scroll-margin-top: 100px;
         }
+        
+        /* Back to top button styling */
+        #back-to-top {
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-gray-200 font-sans transition-colors duration-300">
-    <!-- Navigation -->
+    
     <nav class="fixed w-full bg-gray-900/90 backdrop-blur-md z-50 shadow-lg">
         <div class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
                 <a href="#" class="text-2xl font-bold gradient-text">Portfolio</a>
                 
-                <!-- Mobile menu button -->
                 <div class="md:hidden">
                     <button id="menu-toggle" class="text-gray-300 hover:text-white focus:outline-none">
                         <i class="fas fa-bars text-2xl"></i>
                     </button>
                 </div>
                 
-                <!-- Desktop Menu -->
                 <div class="hidden md:flex space-x-8">
                     <a href="#home" class="nav-link active-nav">Home</a>
                     <a href="#about" class="nav-link">About</a>
@@ -85,7 +80,6 @@
                 </div>
             </div>
             
-            <!-- Mobile Menu -->
             <div id="mobile-menu" class="md:hidden hidden mt-4 pb-2">
                 <a href="#home" class="block py-2 nav-link active-nav">Home</a>
                 <a href="#about" class="block py-2 nav-link">About</a>
@@ -96,14 +90,13 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section id="home" class="section min-h-screen flex items-center pt-20">
         <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between">
             <div class="md:w-1/2 mb-12 md:mb-0">
-                <h1 class="text-4xl md:text-6xl font-bold mb-4">Hi, I'm <span class="gradient-text">Ashish Maurya </span></h1>
-                <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-gray-400">Data Analyst</h2>
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">Hi, I'm <span class="gradient-text">Ashish Maurya</span></h1>
+                <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-gray-400">Python & AI Developer</h2>
                 <p class="text-lg mb-8 text-gray-400 max-w-lg">
-                    I transform data into impactful visual stories and insights that guide smarter business decisions.
+                    I build scalable backend architectures and integrate modern AI technologies like RAG and LangChain to create intelligent, high-performance web applications.
                 </p>
                 <div class="flex space-x-4">
                     <a href="#contact" class="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg font-medium hover:opacity-90 transition-all">
@@ -120,23 +113,20 @@
                     <a href="https://www.linkedin.com/in/ashishmaurya09/" class="text-gray-400 hover:text-white transition-colors">
                         <i class="fab fa-linkedin text-2xl"></i>
                     </a>
-                    <a href="https://x.com/ashishmaurya02" class="text-gray-400 hover:text-white transition-colors">
-                        <i class="fab fa-twitter text-2xl"></i>
+                    <a href="https://leetcode.com/u/ashishmaurya_01/" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fas fa-code text-2xl"></i>
                     </a>
                 </div>
             </div>
             <div class="md:w-1/2 flex justify-center">
                 <div class="relative w-64 h-64 md:w-80 md:h-80">
                     <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full opacity-20 blur-xl"></div>
-                    <img src="ashish.jpg" 
-                         alt="Profile" 
-                         class="relative z-10 w-full h-full rounded-full object-cover border-4 border-gray-800 floating">
+                    <img src="ashish.jpg" alt="Profile" class="relative z-10 w-full h-full rounded-full object-cover border-4 border-gray-800 floating">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
     <section id="about" class="section py-20 bg-gray-800/50">
         <div class="container mx-auto px-6">
             <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
@@ -146,43 +136,36 @@
             <div class="flex flex-col md:flex-row items-center">
                 <div class="md:w-1/3 mb-8 md:mb-0 flex justify-center">
                     <div class="w-64 h-64 rounded-lg overflow-hidden border-2 border-gray-700">
-                        <img src="ashish.jpg" 
-                             alt="About Me" 
-                             class="w-full h-full object-cover">
+                        <img src="ashish.jpg" alt="About Me" class="w-full h-full object-cover">
                     </div>
                 </div>
                 
                 <div class="md:w-2/3 md:pl-12">
                     <p class="text-lg mb-6 text-gray-400">
-                        I’m an aspiring Data Analyst with a strong foundation in Excel, SQL, Power BI, and Python. I enjoy exploring data to uncover trends, solve business problems, and build meaningful visualizations that drive better decisions
+                        I am a Python Developer with a strong foundation in backend development and database management using SQL. I focus on creating robust, efficient web applications and REST APIs utilizing frameworks like Django and FastAPI.
                     </p>
                     <p class="text-lg mb-6 text-gray-400">
-                        Through hands-on projects, I’ve developed dashboards, cleaned messy datasets, and performed business analysis to extract actionable insights. I’m always learning   whether it’s improving my coding skills or understanding new tools in the data ecosystem.
+                        Beyond traditional backend architecture, I have hands-on experience in building AI-powered tools. I leverage Retrieval-Augmented Generation (RAG) and LangChain to bridge the gap between large language models and customized, data-driven solutions.
                     </p>
                     <p class="text-lg mb-8 text-gray-400">
-                        When I’m not working with data, I enjoy staying updated on tech trends and exploring new analytical tools.
+                        My goal is to write clean, readable code and design systems that scale effectively while embracing the latest advancements in AI and machine learning.
                     </p>
                     
                     <div class="flex flex-wrap gap-4">
                         <div class="flex items-center">
                             <div class="w-3 h-3 rounded-full bg-blue-500 mr-2"></div>
-                            <span>Data Analyst</span>
+                            <span>Backend Developer</span>
                         </div>
                         <div class="flex items-center">
                             <div class="w-3 h-3 rounded-full bg-purple-500 mr-2"></div>
-                            <span>ML Engineer</span>
+                            <span>AI Integration</span>
                         </div>
-                        <!-- <div class="flex items-center">
-                            <div class="w-3 h-3 rounded-full bg-green-500 mr-2"></div>
-                            <span>DevOps</span>
-                        </div> -->
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
     <section id="skills" class="section py-20">
         <div class="container mx-auto px-6">
             <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
@@ -190,101 +173,73 @@
             </h2>
             
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <!-- Skill 1 -->
                 <div class="bg-gray-800 rounded-xl p-6 card-hover transition-all">
                     <div class="text-blue-400 mb-4">
-                        <!-- <i class="fab fa-react text-4xl"></i> -->
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" 
-                          alt="Python" 
-                          class="h-10 w-10" />
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="h-10 w-10" />
                     </div>
-                    <h3 class="text-xl font-semibold mb-2">Python</h3>
-                    <p class="text-gray-400">Data analysis, automation, and scripting with libraries like Pandas, NumPy, and Matplotlib.</p>
+                    <h3 class="text-xl font-semibold mb-2">Python & OOP</h3>
+                    <p class="text-gray-400">Writing clean, reusable code leveraging Object-Oriented Programming principles.</p>
                 </div>
                 
-                <!-- Skill 2 -->
                 <div class="bg-gray-800 rounded-xl p-6 card-hover transition-all">
-                    <div class="text-yellow-400 mb-4">
-                        <!-- <i class="fab fa-js text-4xl"></i> -->
-                        <!-- <img src="https://img.icons8.com/color/48/000000/microsoft-excel-2019--v1.png" alt="Excel Logo" class="w-10 h-10"> -->
-                        <i class="fas fa-robot text-4xl text-purple-600"></i>
-
-
+                    <div class="text-green-500 mb-4">
+                        <i class="fas fa-server text-4xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2">Machine Learning</h3>
-                    <p class="text-gray-400">Building predictive models with Scikit-learn, classification, regression, and clustering</p>
+                    <h3 class="text-xl font-semibold mb-2">Django & FastAPI</h3>
+                    <p class="text-gray-400">Developing secure, scalable backend architectures and RESTful APIs.</p>
                 </div>
                 
-                <!-- Skill 3 -->
                 <div class="bg-gray-800 rounded-xl p-6 card-hover transition-all">
-                    <div class="text-green-400 mb-4">
-                        <!-- <i class="fab fa-node-js text-4xl"></i> -->
-                        <i class="fas fa-chart-line text-4xl text-blue-400"></i>
-
-
+                    <div class="text-purple-500 mb-4">
+                        <i class="fas fa-brain text-4xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2">Data Visualization</h3>
-                    <p class="text-gray-400">Creating insightful visual stories using Tableau, Power BI,Excel Seaborn, and Plotly.</p>
+                    <h3 class="text-xl font-semibold mb-2">AI / ML & NLP</h3>
+                    <p class="text-gray-400">Integrating LLMs using RAG, LangChain, Chroma, and Scikit-learn.</p>
                 </div>
                 
-                <!-- Skill 4 -->
-                <div class="bg-gray-800 rounded-xl p-6 card-hover transition-all">
-                    <div class="text-red-400 mb-4">
-                        <i class="fas fa-database text-4xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">Database</h3>
-                    <p class="text-gray-400">MongoDB, PostgreSQL, MYSQL ,and database design.</p>
-                </div>
-                
-                <!-- Skill 5 -->
-                <div class="bg-gray-800 rounded-xl p-6 card-hover transition-all">
-                    <div class="text-purple-400 mb-4">
-                        <!-- <i class="fab fa-css3-alt text-4xl"></i> -->
-                        <i class="fas fa-chart-bar text-4xl text-green-400"></i>
-                        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> -->
-
-
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">Statistics & EDA</h3>
-                    <p class="text-gray-400">Exploratory data analysis, probability, distributions, hypothesis testing, and correlation.</p>
-                </div>
-                
-                <!-- Skill 6 -->
                 <div class="bg-gray-800 rounded-xl p-6 card-hover transition-all">
                     <div class="text-blue-300 mb-4">
-                        <!-- <i class="fas fa-server text-4xl"></i> -->
-                        <i class="fas fa-globe text-4xl text-blue-500"></i>
-
+                        <i class="fas fa-database text-4xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2">Web Apps & Automation</h3>
-                    <p class="text-gray-400">Developing interactive data applications with Streamlit and Flask, making machine learning and analytics tools user-friendly and accessible.</p>
+                    <h3 class="text-xl font-semibold mb-2">Databases</h3>
+                    <p class="text-gray-400">Designing and managing schemas using PostgreSQL, MySQL, and MongoDB.</p>
                 </div>
-                
-                <!-- Skill 7 -->
+
+                <div class="bg-gray-800 rounded-xl p-6 card-hover transition-all">
+                    <div class="text-blue-500 mb-4">
+                        <i class="fab fa-docker text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Docker & DevOps</h3>
+                    <p class="text-gray-400">Containerizing applications for smooth deployment and environment consistency.</p>
+                </div>
+
+                <div class="bg-gray-800 rounded-xl p-6 card-hover transition-all">
+                    <div class="text-orange-500 mb-4">
+                        <i class="fab fa-git-alt text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Version Control</h3>
+                    <p class="text-gray-400">Collaborating effectively using Git and GitHub for codebase management.</p>
+                </div>
+
+                <div class="bg-gray-800 rounded-xl p-6 card-hover transition-all">
+                    <div class="text-yellow-400 mb-4">
+                        <i class="fas fa-network-wired text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">API Testing</h3>
+                    <p class="text-gray-400">Debugging and testing endpoints using Postman to ensure secure data flow.</p>
+                </div>
+
                 <div class="bg-gray-800 rounded-xl p-6 card-hover transition-all">
                     <div class="text-pink-400 mb-4">
-                        <i class="fab fa-git-alt text-4xl"></i>
-                        
+                        <i class="fas fa-layer-group text-4xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2">Tools & Environment</h3>
-                    <p class="text-gray-400">Familiar with working in Jupyter Notebooks, VS Code, Google Colab, and handling packages via pip and virtual environments.</p>
-                </div>
-                
-                <!-- Skill 8 -->
-                <div class="bg-gray-800 rounded-xl p-6 card-hover transition-all">
-                    <div class="text-orange-400 mb-4">
-                        <!-- <i class="fas fa-mobile-alt text-4xl"></i> -->
-                        <i class="fas fa-comments text-4xl text-blue-600"></i>
-                        
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">Natural Language Processing (NLP)</h3>
-                    <p class="text-gray-400">Proficient in text preprocessing, tokenization, vectorization (TF-IDF, word embeddings), and sentiment analysis using spaCy and NLTK</p>
+                    <h3 class="text-xl font-semibold mb-2">Web Apps</h3>
+                    <p class="text-gray-400">Building user-friendly data interfaces using Streamlit.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
     <section id="projects" class="section py-20 bg-gray-800/50">
         <div class="container mx-auto px-6">
             <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
@@ -292,199 +247,138 @@
             </h2>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project 1 -->
+                
                 <div class="bg-gray-800 rounded-xl overflow-hidden card-hover transition-all">
-                    <div class="h-48 bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
-                        <!-- <i class="fas fa-project-diagram text-6xl text-white opacity-90"></i> -->
-                        <img src="customer-segmentation-social.png" alt="Customer Segmentation Project" class="h-full w-full object-cover">
-
+                    <div class="h-48 bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center">
+                        <i class="fas fa-file-pdf text-6xl text-white opacity-90"></i>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Customer Segmentation for Personalized Banking Services</h3>
-                        <p class="text-gray-400 mb-4">Customer segmentation using data analytics enables banks to personalize services based on demographics, behavior, and financial needs</p>
+                        <h3 class="text-xl font-semibold mb-2">DocuQuery AI (RAG System)</h3>
+                        <p class="text-gray-400 mb-4">AI-powered document assistant using RAG architecture. Users can upload PDFs and query them in natural language.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">FastAPI</span>
+                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">LangChain</span>
+                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Docker</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="https://github.com/ramashishmaurya/pdf-rag-chatbot" class="text-blue-400 hover:text-blue-300 transition-colors">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-800 rounded-xl overflow-hidden card-hover transition-all">
+                    <div class="h-48 bg-gradient-to-r from-green-500 to-blue-500 flex items-center justify-center">
+                        <i class="fas fa-shopping-cart text-6xl text-white opacity-90"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">E-Commerce Backend System</h3>
+                        <p class="text-gray-400 mb-4">Scalable REST API backend integrating user authentication, product catalogs, and streamlined order processing.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Django</span>
+                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Python</span>
+                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">PostgreSQL</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="https://github.com/ramashishmaurya" class="text-blue-400 hover:text-blue-300 transition-colors">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-800 rounded-xl overflow-hidden card-hover transition-all">
+                    <div class="h-48 bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
+                        <img src="2e51a943-0ec0-4198-94ec-e4efeeb0d068.png" alt="Email Spam Detection" class="h-full w-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Email Spam Classifier</h3>
+                        <p class="text-gray-400 mb-4">Applied AI/ML and NLP techniques to preprocess unstructured text and built a classification model with 95% accuracy.</p>
                         <div class="flex flex-wrap gap-2 mb-4">
                             <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Machine Learning</span>
-                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Power Bi </span>
+                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">NLP</span>
+                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Python</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="https://github.com/ramashishmaurya/Email-spam-detection" class="text-blue-400 hover:text-blue-300 transition-colors">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <button onclick="toggleProjects()" class="px-6 py-3 border border-gray-700 rounded-lg font-medium hover:bg-gray-800 transition-all inline-flex items-center">
+                    <span id="toggle-text">View Older Projects</span>
+                    <i class="fas fa-arrow-down ml-2" id="toggle-icon"></i>
+                </button>
+            </div>
+
+            <div id="more-projects" class="hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+                
+                <div class="bg-gray-800 rounded-xl overflow-hidden card-hover transition-all">
+                    <div class="h-48 bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
+                        <img src="customer-segmentation-social.png" alt="Customer Segmentation Project" class="h-full w-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Customer Segmentation</h3>
+                        <p class="text-gray-400 mb-4">Customer segmentation using data analytics for personalized banking services.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
                             <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">SQL</span>
-                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Streamlit</span>
-                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Excel</span>
-                            
+                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Power BI</span>
                         </div>
                         <div class="flex space-x-3">
                             <a href="https://github.com/ramashishmaurya/Project-Customer-Segmentation-for-Personalized-Banking-Services" class="text-blue-400 hover:text-blue-300 transition-colors">
                                 <i class="fab fa-github"></i> Code
                             </a>
-                            <a href="https://project-customer-segmentation-for-pj24.onrender.com" class="text-purple-400 hover:text-purple-300 transition-colors">
-                                <i class="fas fa-external-link-alt"></i> Live
-                            </a>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Project 2 -->
+
                 <div class="bg-gray-800 rounded-xl overflow-hidden card-hover transition-all">
                     <div class="h-48 bg-gradient-to-r from-green-500 to-blue-500 flex items-center justify-center">
-                        <!-- <i class="fas fa-chart-line text-6xl text-white opacity-90"></i> # image here -->
                         <img src="shutterstock_1203476287.jpg" alt="Analytics Dashboard" class="h-full w-full object-cover">
- 
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2">Analytics Dashboard</h3>
-                        <p class="text-gray-400 mb-4">The dashboard empowers banks to monitor customer behavior, track engagement metrics, and optimize personalized offerings across segments</p>
+                        <p class="text-gray-400 mb-4">Empowers banks to monitor customer behavior, track engagement metrics.</p>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Power bi </span>
-                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">SQL</span>
+                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Power BI</span>
                             <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Python</span>
-                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Excel</span>
-
                         </div>
                         <div class="flex space-x-3">
                             <a href="https://github.com/ramashishmaurya/Retail-Sales_Analysis" class="text-blue-400 hover:text-blue-300 transition-colors">
                                 <i class="fab fa-github"></i> Code
                             </a>
-                            <a href="#" class="text-purple-400 hover:text-purple-300 transition-colors">
-                                <i class="fas fa-external-link-alt"></i> Live
-                            </a>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Project 3 -->
+
                 <div class="bg-gray-800 rounded-xl overflow-hidden card-hover transition-all">
                     <div class="h-48 bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
-                        <!-- <i class="fas fa-mobile-alt text-6xl text-white opacity-90"></i> -->
-                        <img src="Customer_Churn_Prediction_Models_in_Machine_Learning.png" alt="Customer Churn Analysis Prediction System" class="h-full w-full object-cover">
- 
-
+                        <img src="Customer_Churn_Prediction_Models_in_Machine_Learning.png" alt="Customer Churn" class="h-full w-full object-cover">
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Customer Churn Analysis Prediction System</h3>
-                        <p class="text-gray-400 mb-4">By predicting churn, banks can proactively retain customers through targeted interventions and personalized retention strategies</p>
+                        <h3 class="text-xl font-semibold mb-2">Churn Prediction System</h3>
+                        <p class="text-gray-400 mb-4">Predicting churn to proactively retain customers through targeted interventions.</p>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Power bi </span>
-                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Machine Learning </span>
+                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Machine Learning</span>
                             <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">PostgreSQL</span>
-        
                         </div>
                         <div class="flex space-x-3">
                             <a href="https://github.com/ramashishmaurya/Customer-Churn-Analysis-Prediction-System" class="text-blue-400 hover:text-blue-300 transition-colors">
                                 <i class="fab fa-github"></i> Code
                             </a>
-                            <a href="#" class="text-purple-400 hover:text-purple-300 transition-colors">
-                                <i class="fas fa-external-link-alt"></i> Live
-                            </a>
                         </div>
                     </div>
                 </div>
-
-            
-
-            <!-- Projeect 4  --> 
-            <div class="bg-gray-800 rounded-xl overflow-hidden card-hover transition-all">
-                <div class="h-48 bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
-                    <!-- <i class="fas fa-mobile-alt text-6xl text-white opacity-90"></i> -->
-                    <img src="2e51a943-0ec0-4198-94ec-e4efeeb0d068.png" alt="Customer Churn Analysis Prediction System" class="h-full w-full object-cover">
-
-
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-semibold mb-2">Email Spam Detection</h3>
-                    <p class="text-gray-400 mb-4">Mobile application for tracking workouts and nutrition with social features.</p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Machine Learning</span>
-                        <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Python</span>
-                        <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">NLP</span>
-                        <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Streamlit</span>
-    
-                    </div>
-                    <div class="flex space-x-3">
-                        <a href="https://github.com/ramashishmaurya/Email-spam-detection" class="text-blue-400 hover:text-blue-300 transition-colors">
-                            <i class="fab fa-github"></i> Code
-                        </a>
-                        <a href="#" class="text-purple-400 hover:text-purple-300 transition-colors">
-                            <i class="fas fa-external-link-alt"></i> Live
-                        </a>
-                    </div>
-                </div>
             </div>
-        <!-- project 5  -->
-        <div class="bg-gray-800 rounded-xl overflow-hidden card-hover transition-all">
-            <div class="h-48 bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
-                <!-- <i class="fas fa-mobile-alt text-6xl text-white opacity-90"></i> -->
-                <img src="moview.jpg" alt="Customer Churn Analysis Prediction System" class="h-full w-full object-cover">
 
-
-            </div>
-            <div class="p-6">
-                <h3 class="text-xl font-semibold mb-2">Movies Recommendation</h3>
-                <p class="text-gray-400 mb-4">This system enhances user engagement and satisfaction by delivering tailored movie suggestions based on viewing history and preferences</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                    <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Machine Learning </span>
-                    <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Pandas </span>
-                    <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Streamlit</span>
-
-                </div>
-                <div class="flex space-x-3">
-                    <a href="https://github.com/ramashishmaurya/Movies_recommendation" class="text-blue-400 hover:text-blue-300 transition-colors">
-                        <i class="fab fa-github"></i> Code
-                    </a>
-                    <a href="#" class="text-purple-400 hover:text-purple-300 transition-colors">
-                        <i class="fas fa-external-link-alt"></i> Live
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Project six  6  -->
-        <div class="bg-gray-800 rounded-xl overflow-hidden card-hover transition-all">
-            <div class="h-48 bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
-                <!-- <i class="fas fa-mobile-alt text-6xl text-white opacity-90"></i> -->
-                <img src="text-summarizer.png" alt="Customer Churn Analysis Prediction System" class="h-full w-full object-cover">
-
-
-            </div>
-            <div class="p-6">
-                <h3 class="text-xl font-semibold mb-2">Text summarizer</h3>
-                <p class="text-gray-400 mb-4">This technology helps users quickly understand key information, improving productivity in content-heavy tasks like research or customer support</p>
-                <div class="flex flex-wrap gap-2 mb-4">
-                    <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Machine Learning </span>
-                    <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">NLP</span>
-                    <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Flask</span>
-
-                </div>
-                <div class="flex space-x-3">
-                    <a href="https://github.com/ramashishmaurya/text-summarization" class="text-blue-400 hover:text-blue-300 transition-colors">
-                        <i class="fab fa-github"></i> Code
-                    </a>
-                    <a href="#" class="text-purple-400 hover:text-purple-300 transition-colors">
-                        <i class="fas fa-external-link-alt"></i> Live
-                    </a>
-                </div>
-            </div>
-        </div>
-
-
-        <!-- </div> -->
-
-</div>
-
-            </div>
-                <!-- <a href="#" class="px-6 py-3 border border-gray-700 rounded-lg font-medium hover:bg-gray-800 transition-all inline-flex items-center">
-                    View All Projects <i class="fas fa-arrow-right ml-2"></i>
-                </a> -->
-                <!-- <div class="text-center mt-12">
-                    <button onclick="toggleProjects()" class="px-6 py-3 border border-gray-700 rounded-lg font-medium hover:bg-gray-800 transition-all inline-flex items-center">
-                      <span id="toggle-text">View All Projects</span>
-                      <i class="fas fa-arrow-right ml-2"></i>
-                    </button>
-                  </div>
-                   <! -->
-                   <!-- this is view button bro new  you actually need add the functionality -->
-            </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact" class="section py-20">
         <div class="container mx-auto px-6">
             <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
@@ -501,201 +395,4 @@
                     <div class="space-y-4">
                         <div class="flex items-center">
                             <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center mr-4">
-                                <i class="fas fa-envelope text-blue-400"></i>
-                            </div>
-                            <div>
-                                <p class="text-gray-400">Email</p>
-                                <a href="mailto:ramashishmaurya738@gmail.com" class="hover:text-white transition-colors">ramashishmaurya738@gmail.com</a>
-                               
-                                  
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-center">
-                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center mr-4">
-                                <i class="fas fa-phone-alt text-purple-400"></i>
-                            </div>
-                            <div>
-                                <p class="text-gray-400">Phone</p>
-                                <a href="tel:+1234567890" class="hover:text-white transition-colors">+91 9769295699</a>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-center">
-                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center mr-4">
-                                <i class="fas fa-map-marker-alt text-green-400"></i>
-                            </div>
-                            <div>
-                                <p class="text-gray-400">Location</p>
-                                <p>Mumbai India </p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-8">
-                        <h4 class="text-lg font-medium mb-4">Follow Me</h4>
-                        <div class="flex space-x-4">
-                            <a href="https://github.com/ramashishmaurya" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-500 transition-colors">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="https://www.linkedin.com/in/ashishmaurya09/" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-700 transition-colors">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                            <a href="https://x.com/ashishmaurya02" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-400 transition-colors">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-pink-500 transition-colors">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="md:w-1/2 md:pl-12">
-                    <form class="space-y-4" action="https://formsubmit.co/ramashishmaurya738@gmail.com" method="POST">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                          <div>
-                            <label for="name" class="block mb-2 text-gray-400">Name</label>
-                            <input type="text" id="name" name="name" required
-                              class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all">
-                              <input type="hidden" name="_captcha" value="false">
-                          </div>
-                          <div>
-                            <label for="email" class="block mb-2 text-gray-400">Email</label>
-                            <input type="email" id="email" name="email" required
-                              class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all">
-                          </div>
-                        </div>
-                      
-                        <div>
-                          <label for="subject" class="block mb-2 text-gray-400">Subject</label>
-                          <input type="text" id="subject" name="subject" required
-                            class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all">
-                        </div>
-                      
-                        <div>
-                          <label for="message" class="block mb-2 text-gray-400">Message</label>
-                          <textarea id="message" name="message" rows="5" required
-                            class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"></textarea>
-                        </div>
-                      
-                        <button type="submit"
-                          class="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg font-medium hover:opacity-90 transition-all w-full md:w-auto">
-                          Send Message
-                        </button>
-                      </form>
-                      
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <script>
-        // Mobile menu toggle
-        const menuToggle = document.getElementById('menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-        
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                // Close mobile menu if open
-                if (!mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.add('hidden');
-                }
-                
-                // Update active nav link
-                document.querySelectorAll('.nav-link').forEach(link => {
-                    link.classList.remove('active-nav');
-                });
-                this.classList.add('active-nav');
-                
-                // Scroll to section
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        // Back to top button
-        const backToTopButton = document.getElementById('back-to-top');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTopButton.classList.remove('opacity-0', 'invisible');
-                backToTopButton.classList.add('opacity-100', 'visible');
-            } else {
-                backToTopButton.classList.remove('opacity-100', 'visible');
-                backToTopButton.classList.add('opacity-0', 'invisible');
-            }
-        });
-        
-        backToTopButton.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-        
-        // Highlight active section in navigation
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('.section');
-            let currentSection = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 100;
-                if (window.pageYOffset >= sectionTop) {
-                    currentSection = section.getAttribute('id');
-                }
-            });
-            
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active-nav');
-                if (link.getAttribute('href') === `#${currentSection}`) {
-                    link.classList.add('active-nav');
-                }
-            });
-        });
-    </script>
-    <script>
-        function toggleProjects() {
-          const moreProjects = document.getElementById("more-projects");
-          const toggleText = document.getElementById("toggle-text");
-      
-          if (moreProjects.classList.contains("hidden")) {
-            moreProjects.classList.remove("hidden");
-            toggleText.textContent = "Show Less";
-          } else {
-            moreProjects.classList.add("hidden");
-            toggleText.textContent = "View All Projects";
-          }
-        }
-      </script>
-<!-- <script>
-    function toggleProjects() {
-      const moreProjects = document.getElementById("more-projects");
-      const toggleText = document.getElementById("toggle-text");
-  
-      if (moreProjects.classList.contains("hidden")) {
-        moreProjects.classList.remove("hidden");
-        toggleText.textContent = "Show Less";
-      } else {
-        moreProjects.classList.add("hidden");
-        toggleText.textContent = "View All Projects";
-      }
-    }
-  </script> -->
-     
-</body>
-</html>  
-   
+                                <i class="fas fa-envelope
