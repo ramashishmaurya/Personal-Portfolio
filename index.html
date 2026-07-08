@@ -35,13 +35,21 @@
             transition: width 0.3s ease;
         }
         
-        .nav-link:hover::after, .active-nav::after {
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .active-nav::after {
             width: 100%;
         }
         
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
         }
         
         .floating {
@@ -51,15 +59,13 @@
         .section {
             scroll-margin-top: 100px;
         }
-        
-        /* Back to top button styling */
+
         #back-to-top {
             transition: opacity 0.3s ease, visibility 0.3s ease;
         }
     </style>
 </head>
 <body class="bg-gray-900 text-gray-200 font-sans transition-colors duration-300">
-    
     <nav class="fixed w-full bg-gray-900/90 backdrop-blur-md z-50 shadow-lg">
         <div class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
@@ -93,7 +99,7 @@
     <section id="home" class="section min-h-screen flex items-center pt-20">
         <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between">
             <div class="md:w-1/2 mb-12 md:mb-0">
-                <h1 class="text-4xl md:text-6xl font-bold mb-4">Hi, I'm <span class="gradient-text">Ashish Maurya</span></h1>
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">Hi, I'm <span class="gradient-text">Ashish Maurya </span></h1>
                 <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-gray-400">Python & AI Developer</h2>
                 <p class="text-lg mb-8 text-gray-400 max-w-lg">
                     I build scalable backend architectures and integrate modern AI technologies like RAG and LangChain to create intelligent, high-performance web applications.
@@ -113,8 +119,8 @@
                     <a href="https://www.linkedin.com/in/ashishmaurya09/" class="text-gray-400 hover:text-white transition-colors">
                         <i class="fab fa-linkedin text-2xl"></i>
                     </a>
-                    <a href="https://leetcode.com/u/ashishmaurya_01/" class="text-gray-400 hover:text-white transition-colors">
-                        <i class="fas fa-code text-2xl"></i>
+                    <a href="https://x.com/ashishmaurya02" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-twitter text-2xl"></i>
                     </a>
                 </div>
             </div>
@@ -293,8 +299,8 @@
                         <img src="2e51a943-0ec0-4198-94ec-e4efeeb0d068.png" alt="Email Spam Detection" class="h-full w-full object-cover">
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Email Spam Classifier</h3>
-                        <p class="text-gray-400 mb-4">Applied AI/ML and NLP techniques to preprocess unstructured text and built a classification model with 95% accuracy.</p>
+                        <h3 class="text-xl font-semibold mb-2">Email Spam Detection</h3>
+                        <p class="text-gray-400 mb-4">Applied AI/ML and NLP techniques to preprocess unstructured text and built a classification model.</p>
                         <div class="flex flex-wrap gap-2 mb-4">
                             <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Machine Learning</span>
                             <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">NLP</span>
@@ -304,15 +310,19 @@
                             <a href="https://github.com/ramashishmaurya/Email-spam-detection" class="text-blue-400 hover:text-blue-300 transition-colors">
                                 <i class="fab fa-github"></i> Code
                             </a>
+                            <a href="#" class="text-purple-400 hover:text-purple-300 transition-colors">
+                                <i class="fas fa-external-link-alt"></i> Live
+                            </a>
                         </div>
                     </div>
                 </div>
+
             </div>
 
             <div class="text-center mt-12">
                 <button onclick="toggleProjects()" class="px-6 py-3 border border-gray-700 rounded-lg font-medium hover:bg-gray-800 transition-all inline-flex items-center">
-                    <span id="toggle-text">View Older Projects</span>
-                    <i class="fas fa-arrow-down ml-2" id="toggle-icon"></i>
+                  <span id="toggle-text">View Older Projects</span>
+                  <i class="fas fa-arrow-down ml-2" id="toggle-icon"></i>
                 </button>
             </div>
 
@@ -324,14 +334,20 @@
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2">Customer Segmentation</h3>
-                        <p class="text-gray-400 mb-4">Customer segmentation using data analytics for personalized banking services.</p>
+                        <p class="text-gray-400 mb-4">Customer segmentation using data analytics enables banks to personalize services based on demographics, behavior, and financial needs.</p>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">SQL</span>
+                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Machine Learning</span>
                             <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Power BI</span>
+                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">SQL</span>
+                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Streamlit</span>
+                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Excel</span>
                         </div>
                         <div class="flex space-x-3">
                             <a href="https://github.com/ramashishmaurya/Project-Customer-Segmentation-for-Personalized-Banking-Services" class="text-blue-400 hover:text-blue-300 transition-colors">
                                 <i class="fab fa-github"></i> Code
+                            </a>
+                            <a href="https://project-customer-segmentation-for-pj24.onrender.com" class="text-purple-400 hover:text-purple-300 transition-colors">
+                                <i class="fas fa-external-link-alt"></i> Live
                             </a>
                         </div>
                     </div>
@@ -343,14 +359,19 @@
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2">Analytics Dashboard</h3>
-                        <p class="text-gray-400 mb-4">Empowers banks to monitor customer behavior, track engagement metrics.</p>
+                        <p class="text-gray-400 mb-4">The dashboard empowers banks to monitor customer behavior, track engagement metrics, and optimize personalized offerings across segments.</p>
                         <div class="flex flex-wrap gap-2 mb-4">
                             <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Power BI</span>
+                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">SQL</span>
                             <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Python</span>
+                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Excel</span>
                         </div>
                         <div class="flex space-x-3">
                             <a href="https://github.com/ramashishmaurya/Retail-Sales_Analysis" class="text-blue-400 hover:text-blue-300 transition-colors">
                                 <i class="fab fa-github"></i> Code
+                            </a>
+                            <a href="#" class="text-purple-400 hover:text-purple-300 transition-colors">
+                                <i class="fas fa-external-link-alt"></i> Live
                             </a>
                         </div>
                     </div>
@@ -358,12 +379,13 @@
 
                 <div class="bg-gray-800 rounded-xl overflow-hidden card-hover transition-all">
                     <div class="h-48 bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
-                        <img src="Customer_Churn_Prediction_Models_in_Machine_Learning.png" alt="Customer Churn" class="h-full w-full object-cover">
+                        <img src="Customer_Churn_Prediction_Models_in_Machine_Learning.png" alt="Customer Churn Analysis Prediction System" class="h-full w-full object-cover">
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Churn Prediction System</h3>
-                        <p class="text-gray-400 mb-4">Predicting churn to proactively retain customers through targeted interventions.</p>
+                        <h3 class="text-xl font-semibold mb-2">Customer Churn Analysis</h3>
+                        <p class="text-gray-400 mb-4">By predicting churn, banks can proactively retain customers through targeted interventions and personalized retention strategies.</p>
                         <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Power BI</span>
                             <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Machine Learning</span>
                             <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">PostgreSQL</span>
                         </div>
@@ -371,12 +393,60 @@
                             <a href="https://github.com/ramashishmaurya/Customer-Churn-Analysis-Prediction-System" class="text-blue-400 hover:text-blue-300 transition-colors">
                                 <i class="fab fa-github"></i> Code
                             </a>
+                            <a href="#" class="text-purple-400 hover:text-purple-300 transition-colors">
+                                <i class="fas fa-external-link-alt"></i> Live
+                            </a>
                         </div>
                     </div>
                 </div>
-            </div>
 
-        </div>
+                <div class="bg-gray-800 rounded-xl overflow-hidden card-hover transition-all">
+                    <div class="h-48 bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
+                        <img src="moview.jpg" alt="Movies Recommendation" class="h-full w-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Movies Recommendation</h3>
+                        <p class="text-gray-400 mb-4">This system enhances user engagement and satisfaction by delivering tailored movie suggestions based on viewing history and preferences.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Machine Learning</span>
+                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Pandas</span>
+                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Streamlit</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="https://github.com/ramashishmaurya/Movies_recommendation" class="text-blue-400 hover:text-blue-300 transition-colors">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                            <a href="#" class="text-purple-400 hover:text-purple-300 transition-colors">
+                                <i class="fas fa-external-link-alt"></i> Live
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-800 rounded-xl overflow-hidden card-hover transition-all">
+                    <div class="h-48 bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
+                        <img src="text-summarizer.png" alt="Text Summarizer" class="h-full w-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Text Summarizer</h3>
+                        <p class="text-gray-400 mb-4">This technology helps users quickly understand key information, improving productivity in content-heavy tasks like research or customer support.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Machine Learning</span>
+                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">NLP</span>
+                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Flask</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="https://github.com/ramashishmaurya/text-summarization" class="text-blue-400 hover:text-blue-300 transition-colors">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                            <a href="#" class="text-purple-400 hover:text-purple-300 transition-colors">
+                                <i class="fas fa-external-link-alt"></i> Live
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div> </div>
     </section>
 
     <section id="contact" class="section py-20">
@@ -395,4 +465,191 @@
                     <div class="space-y-4">
                         <div class="flex items-center">
                             <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center mr-4">
-                                <i class="fas fa-envelope
+                                <i class="fas fa-envelope text-blue-400"></i>
+                            </div>
+                            <div>
+                                <p class="text-gray-400">Email</p>
+                                <a href="mailto:ramashishmaurya738@gmail.com" class="hover:text-white transition-colors">ramashishmaurya738@gmail.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center mr-4">
+                                <i class="fas fa-phone-alt text-purple-400"></i>
+                            </div>
+                            <div>
+                                <p class="text-gray-400">Phone</p>
+                                <a href="tel:+919769295699" class="hover:text-white transition-colors">+91 9769295699</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center mr-4">
+                                <i class="fas fa-map-marker-alt text-green-400"></i>
+                            </div>
+                            <div>
+                                <p class="text-gray-400">Location</p>
+                                <p>Mumbai, India</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="text-lg font-medium mb-4">Follow Me</h4>
+                        <div class="flex space-x-4">
+                            <a href="https://github.com/ramashishmaurya" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-500 transition-colors">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/ashishmaurya09/" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-700 transition-colors">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://x.com/ashishmaurya02" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-400 transition-colors">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-pink-500 transition-colors">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 md:pl-12">
+                    <form class="space-y-4" action="https://formsubmit.co/ramashishmaurya738@gmail.com" method="POST">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div>
+                            <label for="name" class="block mb-2 text-gray-400">Name</label>
+                            <input type="text" id="name" name="name" required
+                              class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all">
+                              <input type="hidden" name="_captcha" value="false">
+                          </div>
+                          <div>
+                            <label for="email" class="block mb-2 text-gray-400">Email</label>
+                            <input type="email" id="email" name="email" required
+                              class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all">
+                          </div>
+                        </div>
+                      
+                        <div>
+                          <label for="subject" class="block mb-2 text-gray-400">Subject</label>
+                          <input type="text" id="subject" name="subject" required
+                            class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all">
+                        </div>
+                      
+                        <div>
+                          <label for="message" class="block mb-2 text-gray-400">Message</label>
+                          <textarea id="message" name="message" rows="5" required
+                            class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"></textarea>
+                        </div>
+                      
+                        <button type="submit"
+                          class="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg font-medium hover:opacity-90 transition-all w-full md:w-auto">
+                          Send Message
+                        </button>
+                      </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center opacity-0 invisible hover:bg-blue-700 transition-all z-50">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Close mobile menu if open
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+                
+                // Update active nav link
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active-nav');
+                });
+                this.classList.add('active-nav');
+                
+                // Scroll to section
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Back to top button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Highlight active section in navigation
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.section');
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (window.pageYOffset >= sectionTop) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active-nav');
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.classList.add('active-nav');
+                }
+            });
+        });
+
+        // Toggle Projects Logic
+        function toggleProjects() {
+            const moreProjects = document.getElementById("more-projects");
+            const toggleText = document.getElementById("toggle-text");
+            const toggleIcon = document.getElementById("toggle-icon");
+        
+            if (moreProjects.classList.contains("hidden")) {
+                moreProjects.classList.remove("hidden");
+                toggleText.textContent = "Show Less";
+                toggleIcon.classList.remove("fa-arrow-down");
+                toggleIcon.classList.add("fa-arrow-up");
+            } else {
+                moreProjects.classList.add("hidden");
+                toggleText.textContent = "View Older Projects";
+                toggleIcon.classList.remove("fa-arrow-up");
+                toggleIcon.classList.add("fa-arrow-down");
+            }
+        }
+    </script>
+</body>
+</html>
