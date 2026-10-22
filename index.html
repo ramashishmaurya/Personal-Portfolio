@@ -1,655 +1,1597 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ashish Maurya | Python & AI Developer</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Custom CSS for animations and effects */
-        .gradient-text {
-            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        
-        .nav-link {
-            position: relative;
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -2px;
-            left: 0;
-            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        
-        .active-nav::after {
-            width: 100%;
-        }
-        
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-        
-        .floating {
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        .section {
-            scroll-margin-top: 100px;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ashish Maurya | AI & Data Science Engineer</title>
+  <meta name="description" content="Personal portfolio of Ashish Maurya, AI Engineer & Data Scientist specializing in Agentic AI, LangGraph, RAG systems, and FastAPI backends.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
 
-        #back-to-top {
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
-    </style>
+  <!-- ==================== GOOGLE FONTS ==================== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- ==================== ICONS (FontAwesome) ==================== -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- ==================== MAIN STYLESHEET ==================== -->
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-gray-900 text-gray-200 font-sans transition-colors duration-300">
-    <nav class="fixed w-full bg-gray-900/90 backdrop-blur-md z-50 shadow-lg">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex justify-between items-center">
-                <a href="#" class="text-2xl font-bold gradient-text">Portfolio</a>
-                
-                <div class="md:hidden">
-                    <button id="menu-toggle" class="text-gray-300 hover:text-white focus:outline-none">
-                        <i class="fas fa-bars text-2xl"></i>
-                    </button>
-                </div>
-                
-                <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="nav-link active-nav">Home</a>
-                    <a href="#about" class="nav-link">About</a>
-                    <a href="#skills" class="nav-link">Skills</a>
-                    <a href="#projects" class="nav-link">Projects</a>
-                    <a href="#contact" class="nav-link">Contact</a>
-                </div>
-            </div>
-            
-            <div id="mobile-menu" class="md:hidden hidden mt-4 pb-2">
-                <a href="#home" class="block py-2 nav-link active-nav">Home</a>
-                <a href="#about" class="block py-2 nav-link">About</a>
-                <a href="#skills" class="block py-2 nav-link">Skills</a>
-                <a href="#projects" class="block py-2 nav-link">Projects</a>
-                <a href="#contact" class="block py-2 nav-link">Contact</a>
-            </div>
-        </div>
+<body>
+
+  <!-- ========================================================================
+       01. FLOATING NAVIGATION BAR
+       ======================================================================== -->
+  <header class="header-wrapper">
+    <nav class="navbar" id="main-nav">
+      <a href="#home" class="brand-logo">
+        <div class="brand-icon">AM</div>
+        <span>Ashish Maurya</span>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <ul class="nav-links">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#console">AI Console</a></li>
+        <li><a href="#intelligence">Open Source</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <!-- Action Buttons -->
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark / Light Theme" title="Toggle Theme">
+          <i id="theme-icon" class="fas fa-sun"></i>
+        </button>
+
+        <a href="#contact" class="btn-hire">Get in Touch</a>
+
+        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Open Navigation Menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
     </nav>
+  </header>
 
-    <section id="home" class="section min-h-screen flex items-center pt-20">
-        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between">
-            <div class="md:w-1/2 mb-12 md:mb-0">
-                <h1 class="text-4xl md:text-6xl font-bold mb-4">Hi, I'm <span class="gradient-text">Ashish Maurya </span></h1>
-                <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-gray-400">Python & AI Developer</h2>
-                <p class="text-lg mb-8 text-gray-400 max-w-lg">
-                    I build scalable backend architectures and integrate modern AI technologies like RAG and LangChain to create intelligent, high-performance web applications.
-                </p>
-                <div class="flex space-x-4">
-                    <a href="#contact" class="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg font-medium hover:opacity-90 transition-all">
-                        Contact Me
-                    </a>
-                    <a href="#projects" class="px-6 py-3 border border-gray-700 rounded-lg font-medium hover:bg-gray-800 transition-all">
-                        View Work
-                    </a>
-                </div>
-                <div class="flex mt-8 space-x-4">
-                    <a href="https://github.com/ramashishmaurya" class="text-gray-400 hover:text-white transition-colors">
-                        <i class="fab fa-github text-2xl"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/ashishmaurya09/" class="text-gray-400 hover:text-white transition-colors">
-                        <i class="fab fa-linkedin text-2xl"></i>
-                    </a>
-                    <a href="https://x.com/ashishmaurya02" class="text-gray-400 hover:text-white transition-colors">
-                        <i class="fab fa-twitter text-2xl"></i>
-                    </a>
-                </div>
+  <!-- Mobile Dropdown Menu -->
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="#home">Home</a>
+    <a href="#console">AI Console</a>
+    <a href="#intelligence">Open Source</a>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+
+  <!-- ========================================================================
+       02. HERO SECTION
+       Featuring Ashish's photo (profile.jpg), signature, bio, and CTAs
+       ======================================================================== -->
+  <section id="home" class="hero-section">
+    <div class="container">
+      <div class="hero-grid">
+        
+        <!-- Left Column: Introduction & Pitch -->
+        <div class="hero-content">
+          <a href="#intelligence" class="hero-badge-pill">
+            <div class="avatar-stack">
+              <span>SK</span>
+              <span>LG</span>
+              <span>QD</span>
             </div>
-            <div class="md:w-1/2 flex justify-center">
-                <div class="relative w-64 h-64 md:w-80 md:h-80">
-                    <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full opacity-20 blur-xl"></div>
-                    <img src="githubs .jpeg" alt="Profile" class="relative z-10 w-full h-full rounded-full object-cover border-4 border-gray-800 floating">
-                </div>
+            <span class="badge-pill-text">Open source framework contributor</span>
+            <div class="badge-pill-arrow">
+              <i class="fas fa-arrow-right"></i>
             </div>
+          </a>
+
+          <h1 class="hero-title">Ashish Maurya</h1>
+
+          <p class="hero-description">
+            AI Engineer &amp; Data Scientist based in <strong>Mumbai, India</strong>. Specializing in 
+            <strong>Agentic AI workflows</strong>, <strong>LangGraph multi-agent systems</strong>, 
+            <strong>RAG architectures</strong>, and high-performance <strong>FastAPI</strong> backends. 
+            Transforming complex data into intelligent, autonomous production systems.
+          </p>
+
+          <!-- Social Links Row -->
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/ashishmaurya09/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="LinkedIn" title="LinkedIn">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://github.com/ramashishmaurya" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="GitHub" title="GitHub">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="https://x.com/ashishmaurya02" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Twitter / X" title="Twitter">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="mailto:ramashishmaurya738@gmail.com" class="social-btn" aria-label="Email" title="Email Me">
+              <i class="fas fa-envelope"></i>
+            </a>
+          </div>
+
+          <!-- Quick Launch Showcase Pills -->
+          <div class="hero-quick-pills">
+            <a href="https://github.com/ramashishmaurya" target="_blank" class="quick-pill">
+              <i class="fas fa-cube"></i> SynapseKit Framework
+            </a>
+            <a href="https://github.com/ramashishmaurya/pdf-rag-chatbot" target="_blank" class="quick-pill">
+              <i class="fas fa-file-pdf"></i> IntelliDoc RAG
+            </a>
+            <a href="https://project-customer-segmentation-for-pj24.onrender.com" target="_blank" class="quick-pill">
+              <i class="fas fa-chart-pie"></i> Banking AI Live
+            </a>
+          </div>
+
+          <!-- Primary Call to Action Buttons -->
+          <div class="hero-actions">
+            <a href="Ashish_Maurya_Resume.pdf" download="Ashish_Maurya_Resume.pdf" class="btn-primary">
+              <i class="fas fa-file-arrow-down"></i> Download Resume
+            </a>
+            <a href="#projects" class="btn-secondary">
+              <i class="fas fa-compass"></i> Explore Work
+            </a>
+          </div>
+
+          <!-- Bottom Stat Strip -->
+          <div class="hero-stats-strip">
+            <div class="stat-item">
+              <h3>AI &amp; LLMs</h3>
+              <p>Stateful agent graphs, RAG pipelines &amp; autonomous execution tools</p>
+            </div>
+            <div class="stat-item">
+              <h3>Backend &amp; MLOps</h3>
+              <p>Low-latency FastAPI microservices, Docker &amp; cloud infrastructure</p>
+            </div>
+          </div>
         </div>
-    </section>
 
-    <section id="about" class="section py-20 bg-gray-800/50">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
-                <span class="gradient-text">About Me</span>
-            </h2>
+        <!-- Right Column: Visual Portrait Card with Ashish's Photo (profile.jpg) -->
+        <div class="hero-visual-card">
+          <div class="portrait-container">
+            <!-- Handwritten Signature -->
+            <span class="portrait-signature">Ashish</span>
             
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/3 mb-8 md:mb-0 flex justify-center">
-                    <div class="w-64 h-64 rounded-lg overflow-hidden border-2 border-gray-700">
-                        <img src="githubs .jpeg" alt="About Me" class="w-full h-full object-cover">
-                    </div>
-                </div>
-                
-                <div class="md:w-2/3 md:pl-12">
-                    <p class="text-lg mb-6 text-gray-400">
-                        I am a Python Developer with a strong foundation in backend development and database management using SQL. I focus on creating robust, efficient web applications and REST APIs utilizing frameworks like Django and FastAPI.
-                    </p>
-                    <p class="text-lg mb-6 text-gray-400">
-                        Beyond traditional backend architecture, I have hands-on experience in building AI-powered tools. I leverage Retrieval-Augmented Generation (RAG) and LangChain to bridge the gap between large language models and customized, data-driven solutions.
-                    </p>
-                    <p class="text-lg mb-8 text-gray-400">
-                        My goal is to write clean, readable code and design systems that scale effectively while embracing the latest advancements in AI and machine learning.
-                    </p>
-                    
-                    <div class="flex flex-wrap gap-4">
-                        <div class="flex items-center">
-                            <div class="w-3 h-3 rounded-full bg-blue-500 mr-2"></div>
-                            <span>Backend Developer</span>
-                        </div>
-                        <div class="flex items-center">
-                            <div class="w-3 h-3 rounded-full bg-purple-500 mr-2"></div>
-                            <span>AI Integration</span>
-                        </div>
-                    </div>
-                </div>
+            <!-- Location Globe Indicator -->
+            <div class="portrait-globe" title="Mumbai, Maharashtra, India">
+              <i class="fas fa-globe"></i>
             </div>
+
+            <!-- Profile Image (Ashish Maurya) -->
+            <img src="profile.jpg" alt="Ashish Maurya" class="portrait-img">
+
+            <!-- Active Status Holographic Pill -->
+            <div class="portrait-live-chip">
+              <span class="pulse-dot"></span>
+              <span>Online • Building AI Systems</span>
+            </div>
+          </div>
+
+          <!-- Floating Badges on Edge -->
+          <div class="floating-badge badge-pos-1" title="Agentic AI & LLMs">
+            <i class="fas fa-brain"></i>
+          </div>
+          <div class="floating-badge badge-pos-2" title="LangGraph Multi-Agent Workflows">
+            <i class="fas fa-project-diagram"></i>
+          </div>
+          <div class="floating-badge badge-pos-3" title="Production Cloud & Docker">
+            <i class="fas fa-rocket"></i>
+          </div>
         </div>
-    </section>
 
-    <section id="skills" class="section py-20">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
-                <span class="gradient-text">My Skills</span>
-            </h2>
-            
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="bg-gray-800 rounded-xl p-6 card-hover transition-all">
-                    <div class="text-blue-400 mb-4">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="h-10 w-10" />
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">Python & OOP</h3>
-                    <p class="text-gray-400">Writing clean, reusable code leveraging Object-Oriented Programming principles.</p>
-                </div>
-                
-                <div class="bg-gray-800 rounded-xl p-6 card-hover transition-all">
-                    <div class="text-green-500 mb-4">
-                        <i class="fas fa-server text-4xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">Django & FastAPI</h3>
-                    <p class="text-gray-400">Developing secure, scalable backend architectures and RESTful APIs.</p>
-                </div>
-                
-                <div class="bg-gray-800 rounded-xl p-6 card-hover transition-all">
-                    <div class="text-purple-500 mb-4">
-                        <i class="fas fa-brain text-4xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">AI / ML & NLP</h3>
-                    <p class="text-gray-400">Integrating LLMs using RAG, LangChain, Chroma, and Scikit-learn.</p>
-                </div>
-                
-                <div class="bg-gray-800 rounded-xl p-6 card-hover transition-all">
-                    <div class="text-blue-300 mb-4">
-                        <i class="fas fa-database text-4xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">Databases</h3>
-                    <p class="text-gray-400">Designing and managing schemas using PostgreSQL, MySQL, and MongoDB.</p>
-                </div>
+      </div>
+    </div>
+  </section>
 
-                <div class="bg-gray-800 rounded-xl p-6 card-hover transition-all">
-                    <div class="text-blue-500 mb-4">
-                        <i class="fab fa-docker text-4xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">Docker & DevOps</h3>
-                    <p class="text-gray-400">Containerizing applications for smooth deployment and environment consistency.</p>
-                </div>
 
-                <div class="bg-gray-800 rounded-xl p-6 card-hover transition-all">
-                    <div class="text-orange-500 mb-4">
-                        <i class="fab fa-git-alt text-4xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">Version Control</h3>
-                    <p class="text-gray-400">Collaborating effectively using Git and GitHub for codebase management.</p>
-                </div>
-
-                <div class="bg-gray-800 rounded-xl p-6 card-hover transition-all">
-                    <div class="text-yellow-400 mb-4">
-                        <i class="fas fa-network-wired text-4xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">API Testing</h3>
-                    <p class="text-gray-400">Debugging and testing endpoints using Postman to ensure secure data flow.</p>
-                </div>
-
-                <div class="bg-gray-800 rounded-xl p-6 card-hover transition-all">
-                    <div class="text-pink-400 mb-4">
-                        <i class="fas fa-layer-group text-4xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2">Web Apps</h3>
-                    <p class="text-gray-400">Building user-friendly data interfaces using Streamlit.</p>
-                </div>
-            </div>
+  <!-- ========================================================================
+       03. IMPACT METRICS STRIP
+       ======================================================================== -->
+  <section class="metrics-banner">
+    <div class="container">
+      <div class="metrics-grid">
+        
+        <div class="metric-card">
+          <span class="metric-number">4+</span>
+          <span class="metric-label">Merged Framework PRs</span>
         </div>
-    </section>
 
-    <section id="projects" class="section py-20 bg-gray-800/50">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
-                <span class="gradient-text">My Projects</span>
-            </h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                
-                <div class="bg-gray-800 rounded-xl overflow-hidden card-hover transition-all">
-                    <div class="h-48 bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center">
-                        <i class="fas fa-file-pdf text-6xl text-white opacity-90"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">DocuQuery AI (RAG System)</h3>
-                        <p class="text-gray-400 mb-4">AI-powered document assistant using RAG architecture. Users can upload PDFs and query them in natural language.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">FastAPI</span>
-                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">LangChain</span>
-                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Docker</span>
-                        </div>
-                        <div class="flex space-x-3">
-                            <a href="https://github.com/ramashishmaurya/pdf-rag-chatbot" class="text-blue-400 hover:text-blue-300 transition-colors">
-                                <i class="fab fa-github"></i> Code
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-gray-800 rounded-xl overflow-hidden card-hover transition-all">
-                    <div class="h-48 bg-gradient-to-r from-green-500 to-blue-500 flex items-center justify-center">
-                        <i class="fas fa-shopping-cart text-6xl text-white opacity-90"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">E-Commerce Backend System</h3>
-                        <p class="text-gray-400 mb-4">Scalable REST API backend integrating user authentication, product catalogs, and streamlined order processing.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Django</span>
-                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Python</span>
-                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">PostgreSQL</span>
-                        </div>
-                        <div class="flex space-x-3">
-                            <a href="https://github.com/ramashishmaurya/e-commerce-backend-" class="text-blue-400 hover:text-blue-300 transition-colors">
-                                <i class="fab fa-github"></i> Code
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-gray-800 rounded-xl overflow-hidden card-hover transition-all">
-                    <div class="h-48 bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
-                        <img src="2e51a943-0ec0-4198-94ec-e4efeeb0d068.png" alt="Email Spam Detection" class="h-full w-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Email Spam Detection</h3>
-                        <p class="text-gray-400 mb-4">Applied AI/ML and NLP techniques to preprocess unstructured text and built a classification model.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Machine Learning</span>
-                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">NLP</span>
-                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Python</span>
-                        </div>
-                        <div class="flex space-x-3">
-                            <a href="https://github.com/ramashishmaurya/Email-spam-detection" class="text-blue-400 hover:text-blue-300 transition-colors">
-                                <i class="fab fa-github"></i> Code
-                            </a>
-                            <a href="#" class="text-purple-400 hover:text-purple-300 transition-colors">
-                                <i class="fas fa-external-link-alt"></i> Live
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="text-center mt-12">
-                <button onclick="toggleProjects()" class="px-6 py-3 border border-gray-700 rounded-lg font-medium hover:bg-gray-800 transition-all inline-flex items-center">
-                  <span id="toggle-text">View Older Projects</span>
-                  <i class="fas fa-arrow-down ml-2" id="toggle-icon"></i>
-                </button>
-            </div>
-
-            <div id="more-projects" class="hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
-                
-                <div class="bg-gray-800 rounded-xl overflow-hidden card-hover transition-all">
-                    <div class="h-48 bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
-                        <img src="customer-segmentation-social.png" alt="Customer Segmentation Project" class="h-full w-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Customer Segmentation</h3>
-                        <p class="text-gray-400 mb-4">Customer segmentation using data analytics enables banks to personalize services based on demographics, behavior, and financial needs.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Machine Learning</span>
-                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Power BI</span>
-                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">SQL</span>
-                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Streamlit</span>
-                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Excel</span>
-                        </div>
-                        <div class="flex space-x-3">
-                            <a href="https://github.com/ramashishmaurya/Project-Customer-Segmentation-for-Personalized-Banking-Services" class="text-blue-400 hover:text-blue-300 transition-colors">
-                                <i class="fab fa-github"></i> Code
-                            </a>
-                            <a href="https://project-customer-segmentation-for-pj24.onrender.com" class="text-purple-400 hover:text-purple-300 transition-colors">
-                                <i class="fas fa-external-link-alt"></i> Live
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-gray-800 rounded-xl overflow-hidden card-hover transition-all">
-                    <div class="h-48 bg-gradient-to-r from-green-500 to-blue-500 flex items-center justify-center">
-                        <img src="shutterstock_1203476287.jpg" alt="Analytics Dashboard" class="h-full w-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Analytics Dashboard</h3>
-                        <p class="text-gray-400 mb-4">The dashboard empowers banks to monitor customer behavior, track engagement metrics, and optimize personalized offerings across segments.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Power BI</span>
-                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">SQL</span>
-                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Python</span>
-                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Excel</span>
-                        </div>
-                        <div class="flex space-x-3">
-                            <a href="https://github.com/ramashishmaurya/Retail-Sales_Analysis" class="text-blue-400 hover:text-blue-300 transition-colors">
-                                <i class="fab fa-github"></i> Code
-                            </a>
-                            <a href="#" class="text-purple-400 hover:text-purple-300 transition-colors">
-                                <i class="fas fa-external-link-alt"></i> Live
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-gray-800 rounded-xl overflow-hidden card-hover transition-all">
-                    <div class="h-48 bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
-                        <img src="Customer_Churn_Prediction_Models_in_Machine_Learning.png" alt="Customer Churn Analysis Prediction System" class="h-full w-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Customer Churn Analysis</h3>
-                        <p class="text-gray-400 mb-4">By predicting churn, banks can proactively retain customers through targeted interventions and personalized retention strategies.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Power BI</span>
-                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Machine Learning</span>
-                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">PostgreSQL</span>
-                        </div>
-                        <div class="flex space-x-3">
-                            <a href="https://github.com/ramashishmaurya/Customer-Churn-Analysis-Prediction-System" class="text-blue-400 hover:text-blue-300 transition-colors">
-                                <i class="fab fa-github"></i> Code
-                            </a>
-                            <a href="#" class="text-purple-400 hover:text-purple-300 transition-colors">
-                                <i class="fas fa-external-link-alt"></i> Live
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-gray-800 rounded-xl overflow-hidden card-hover transition-all">
-                    <div class="h-48 bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
-                        <img src="moview.jpg" alt="Movies Recommendation" class="h-full w-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Movies Recommendation</h3>
-                        <p class="text-gray-400 mb-4">This system enhances user engagement and satisfaction by delivering tailored movie suggestions based on viewing history and preferences.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Machine Learning</span>
-                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Pandas</span>
-                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Streamlit</span>
-                        </div>
-                        <div class="flex space-x-3">
-                            <a href="https://github.com/ramashishmaurya/Movies_recommendation" class="text-blue-400 hover:text-blue-300 transition-colors">
-                                <i class="fab fa-github"></i> Code
-                            </a>
-                            <a href="#" class="text-purple-400 hover:text-purple-300 transition-colors">
-                                <i class="fas fa-external-link-alt"></i> Live
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-gray-800 rounded-xl overflow-hidden card-hover transition-all">
-                    <div class="h-48 bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
-                        <img src="text-summarizer.png" alt="Text Summarizer" class="h-full w-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Text Summarizer</h3>
-                        <p class="text-gray-400 mb-4">This technology helps users quickly understand key information, improving productivity in content-heavy tasks like research or customer support.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Machine Learning</span>
-                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">NLP</span>
-                            <span class="text-xs px-2 py-1 bg-gray-700 rounded-full">Flask</span>
-                        </div>
-                        <div class="flex space-x-3">
-                            <a href="https://github.com/ramashishmaurya/text-summarization" class="text-blue-400 hover:text-blue-300 transition-colors">
-                                <i class="fab fa-github"></i> Code
-                            </a>
-                            <a href="#" class="text-purple-400 hover:text-purple-300 transition-colors">
-                                <i class="fas fa-external-link-alt"></i> Live
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-            </div> </div>
-    </section>
-
-    <section id="contact" class="section py-20">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
-                <span class="gradient-text">Get In Touch</span>
-            </h2>
-            
-            <div class="flex flex-col md:flex-row">
-                <div class="md:w-1/2 mb-8 md:mb-0">
-                    <h3 class="text-2xl font-semibold mb-4">Contact Information</h3>
-                    <p class="text-gray-400 mb-6">
-                        Feel free to reach out if you're looking for a developer, have a question, or just want to connect.
-                    </p>
-                    
-                    <div class="space-y-4">
-                        <div class="flex items-center">
-                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center mr-4">
-                                <i class="fas fa-envelope text-blue-400"></i>
-                            </div>
-                            <div>
-                                <p class="text-gray-400">Email</p>
-                                <a href="mailto:ramashishmaurya738@gmail.com" class="hover:text-white transition-colors">ramashishmaurya738@gmail.com</a>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-center">
-                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center mr-4">
-                                <i class="fas fa-phone-alt text-purple-400"></i>
-                            </div>
-                            <div>
-                                <p class="text-gray-400">Phone</p>
-                                <a href="tel:+919769295699" class="hover:text-white transition-colors">+91 9769295699</a>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-center">
-                            <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center mr-4">
-                                <i class="fas fa-map-marker-alt text-green-400"></i>
-                            </div>
-                            <div>
-                                <p class="text-gray-400">Location</p>
-                                <p>Mumbai, India</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-8">
-                        <h4 class="text-lg font-medium mb-4">Follow Me</h4>
-                        <div class="flex space-x-4">
-                            <a href="https://github.com/ramashishmaurya" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-500 transition-colors">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="https://www.linkedin.com/in/ashishmaurya09/" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-700 transition-colors">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                            <a href="https://x.com/ashishmaurya02" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-400 transition-colors">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-pink-500 transition-colors">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="md:w-1/2 md:pl-12">
-                    <form class="space-y-4" action="https://formsubmit.co/ramashishmaurya738@gmail.com" method="POST">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                          <div>
-                            <label for="name" class="block mb-2 text-gray-400">Name</label>
-                            <input type="text" id="name" name="name" required
-                              class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all">
-                              <input type="hidden" name="_captcha" value="false">
-                          </div>
-                          <div>
-                            <label for="email" class="block mb-2 text-gray-400">Email</label>
-                            <input type="email" id="email" name="email" required
-                              class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all">
-                          </div>
-                        </div>
-                      
-                        <div>
-                          <label for="subject" class="block mb-2 text-gray-400">Subject</label>
-                          <input type="text" id="subject" name="subject" required
-                            class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all">
-                        </div>
-                      
-                        <div>
-                          <label for="message" class="block mb-2 text-gray-400">Message</label>
-                          <textarea id="message" name="message" rows="5" required
-                            class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"></textarea>
-                        </div>
-                      
-                        <button type="submit"
-                          class="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg font-medium hover:opacity-90 transition-all w-full md:w-auto">
-                          Send Message
-                        </button>
-                      </form>
-                </div>
-            </div>
+        <div class="metric-card">
+          <span class="metric-number">8+</span>
+          <span class="metric-label">Production AI Systems</span>
         </div>
-    </section>
 
-    <button id="back-to-top" class="fixed bottom-8 right-8 bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center opacity-0 invisible hover:bg-blue-700 transition-all z-50">
-        <i class="fas fa-arrow-up"></i>
-    </button>
+        <div class="metric-card">
+          <span class="metric-number">&lt;45ms</span>
+          <span class="metric-label">Vector Retrieval Latency</span>
+        </div>
 
-    <script>
-        // Mobile menu toggle
-        const menuToggle = document.getElementById('menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
+        <div class="metric-card">
+          <span class="metric-number">100%</span>
+          <span class="metric-label">Containerized Reproducibility</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================================================
+       04. ENHANCED INTERACTIVE AI AGENT CONSOLE (LIVE PROMPT INPUT + STREAMING)
+       ======================================================================== -->
+  <section id="console" class="terminal-section">
+    <div class="container">
+      
+      <div style="text-align: center; max-width: 760px; margin: 0 auto 2.5rem;">
+        <div class="section-tag">
+          <span class="pulse-dot"></span>
+          <span>Interactive AI Terminal</span>
+        </div>
+        <h2 class="section-title">Query the <span class="gradient-text">Agent System</span></h2>
+        <p class="section-subtitle" style="margin: 0 auto;">
+          Test my autonomous reasoning engine. Switch active LLM backends, inspect chain-of-thought traces, or enter custom prompts to watch token-by-token streaming responses.
+        </p>
+      </div>
+
+      <!-- Model Switcher Selector Bar -->
+      <div class="model-switcher-row">
+        <span class="model-switcher-label"><i class="fas fa-microchip"></i> Active Model Engine:</span>
+        <div class="model-pills-list">
+          <button class="model-pill active" data-model="llama">
+            <i class="fas fa-bolt" style="color: #22d3ee;"></i>
+            <span>Groq / Llama-3.3-70B</span>
+            <span class="pill-badge">28ms</span>
+          </button>
+          <button class="model-pill" data-model="deepseek">
+            <i class="fas fa-brain" style="color: #a78bfa;"></i>
+            <span>DeepSeek-R1</span>
+            <span class="pill-badge">Reasoning CoT</span>
+          </button>
+          <button class="model-pill" data-model="claude">
+            <i class="fas fa-layer-group" style="color: #f59e0b;"></i>
+            <span>Claude-3.5-Sonnet</span>
+            <span class="pill-badge">Architecture</span>
+          </button>
+          <button class="model-pill" data-model="qdrant">
+            <i class="fas fa-database" style="color: #34d399;"></i>
+            <span>Qdrant Hybrid</span>
+            <span class="pill-badge">Vector DB</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="terminal-box">
         
-        menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-        
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                // Close mobile menu if open
-                if (!mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.add('hidden');
-                }
-                
-                // Update active nav link
-                document.querySelectorAll('.nav-link').forEach(link => {
-                    link.classList.remove('active-nav');
-                });
-                this.classList.add('active-nav');
-                
-                // Scroll to section
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        // Back to top button
-        const backToTopButton = document.getElementById('back-to-top');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTopButton.classList.remove('opacity-0', 'invisible');
-                backToTopButton.classList.add('opacity-100', 'visible');
-            } else {
-                backToTopButton.classList.remove('opacity-100', 'visible');
-                backToTopButton.classList.add('opacity-0', 'invisible');
-            }
-        });
-        
-        backToTopButton.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-        
-        // Highlight active section in navigation
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('.section');
-            let currentSection = '';
+        <!-- Header with Live Telemetry -->
+        <div class="terminal-header">
+          <div class="terminal-dots">
+            <span class="terminal-dot dot-red"></span>
+            <span class="terminal-dot dot-yellow"></span>
+            <span class="terminal-dot dot-green"></span>
+          </div>
+
+          <div class="terminal-title">
+            <i class="fas fa-terminal"></i>
+            <span id="terminal-cluster-title">ashish-ai-agent-v2.6 :: groq-llama-3.3-70b</span>
+          </div>
+
+          <div class="terminal-telemetry">
+            <span class="telemetry-tag" id="telemetry-model">model: groq/llama-3.3-70b</span>
+            <span class="telemetry-tag" id="telemetry-latency">latency: 28ms</span>
+            <span class="telemetry-tag" id="telemetry-toks">speed: 138 tok/s</span>
+            <span class="telemetry-tag active" id="telemetry-status">● Active (Ready)</span>
+          </div>
+        </div>
+
+        <div class="terminal-body">
+          
+          <!-- Category Filter Tabs for Prompts -->
+          <div class="terminal-cat-filter">
+            <button class="term-cat-tab active" data-cat="all">All Presets</button>
+            <button class="term-cat-tab" data-cat="agents">Agent Architecture</button>
+            <button class="term-cat-tab" data-cat="demos">Simulations &amp; ML</button>
+            <button class="term-cat-tab" data-cat="hiring">Hiring &amp; Stack</button>
+          </div>
+
+          <!-- Quick Prompt Chips -->
+          <div class="terminal-chips-row">
+            <!-- Agent Architecture -->
+            <button class="term-cmd-btn" data-cat="agents" data-cmd="architecture"><i class="fas fa-project-diagram"></i> Multi-Agent Architecture</button>
+            <button class="term-cmd-btn" data-cat="agents" data-cmd="synapse_aws"><i class="fas fa-cloud"></i> SynapseKit AWS Tool (PR #1056)</button>
+            <button class="term-cmd-btn" data-cat="agents" data-cmd="podman_sandbox"><i class="fas fa-box"></i> Podman Sandbox (PR #1057)</button>
             
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 100;
-                if (window.pageYOffset >= sectionTop) {
-                    currentSection = section.getAttribute('id');
-                }
-            });
-            
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active-nav');
-                if (link.getAttribute('href') === `#${currentSection}`) {
-                    link.classList.add('active-nav');
-                }
-            });
-        });
+            <!-- Simulations & ML -->
+            <button class="term-cmd-btn" data-cat="demos" data-cmd="rag_demo"><i class="fas fa-file-pdf"></i> RAG Simulation (PyMuPDF + Qdrant)</button>
+            <button class="term-cmd-btn" data-cat="demos" data-cmd="banking_ml"><i class="fas fa-chart-line"></i> Banking ML Churn Model</button>
+            <button class="term-cmd-btn" data-cat="demos" data-cmd="benchmarks"><i class="fas fa-tachometer-alt"></i> Latency &amp; Speed Benchmarks</button>
 
-        // Toggle Projects Logic
-        function toggleProjects() {
-            const moreProjects = document.getElementById("more-projects");
-            const toggleText = document.getElementById("toggle-text");
-            const toggleIcon = document.getElementById("toggle-icon");
+            <!-- Hiring & Stack -->
+            <button class="term-cmd-btn" data-cat="hiring" data-cmd="why_hire"><i class="fas fa-star"></i> Why Hire Ashish?</button>
+            <button class="term-cmd-btn" data-cat="hiring" data-cmd="stack"><i class="fas fa-layer-group"></i> Full Engineering Arsenal</button>
+            <button class="term-cmd-btn" data-cat="hiring" data-cmd="contact"><i class="fas fa-address-card"></i> Contact Protocol</button>
+          </div>
+
+          <!-- Output Toolbar (Copy, CoT Toggle, Clear, JSON) -->
+          <div class="terminal-output-toolbar">
+            <div class="output-toolbar-left">
+              <span class="output-status-indicator"><i class="fas fa-terminal"></i> Interactive Shell Session</span>
+            </div>
+            <div class="output-toolbar-right">
+              <button id="term-copy-btn" class="term-tool-btn" title="Copy output to clipboard">
+                <i class="fas fa-copy"></i> <span id="copy-btn-text">Copy</span>
+              </button>
+              <button id="term-cot-btn" class="term-tool-btn" title="Toggle Chain-of-Thought reasoning steps">
+                <i class="fas fa-route"></i> <span>Chain-of-Thought (CoT)</span>
+              </button>
+              <button id="term-clear-btn" class="term-tool-btn" title="Clear terminal screen">
+                <i class="fas fa-eraser"></i> <span>Clear Screen</span>
+              </button>
+              <button id="term-export-btn" class="term-tool-btn" title="Export as JSON">
+                <i class="fas fa-download"></i> <span>JSON</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Chain-of-Thought (CoT) Visual Trace Panel (Toggleable) -->
+          <div id="cot-trace-panel" class="cot-trace-panel" style="display: none;">
+            <div class="cot-trace-header">
+              <i class="fas fa-brain" style="color: #a78bfa;"></i>
+              <span>Live Chain-of-Thought Reasoning Graph</span>
+            </div>
+            <div class="cot-steps-row">
+              <div class="cot-step active">
+                <span class="cot-step-num">1</span>
+                <span class="cot-step-title">Intent Router</span>
+                <span class="cot-step-desc">Decomposing query syntax</span>
+              </div>
+              <div class="cot-step active">
+                <span class="cot-step-num">2</span>
+                <span class="cot-step-title">Qdrant Retrieval</span>
+                <span class="cot-step-desc">Dense cosine similarity > 0.88</span>
+              </div>
+              <div class="cot-step active">
+                <span class="cot-step-num">3</span>
+                <span class="cot-step-title">Agent Tool Dispatch</span>
+                <span class="cot-step-desc">Sandboxed execution verify</span>
+              </div>
+              <div class="cot-step active">
+                <span class="cot-step-num">4</span>
+                <span class="cot-step-title">Grounded Synthesis</span>
+                <span class="cot-step-desc">Zero hallucination verified</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Terminal Screen (History + Active Input Prompt Line) -->
+          <div class="terminal-screen" id="terminal-screen">
+            <div id="terminal-history" class="terminal-history">
+              <div class="terminal-entry">
+                <pre class="terminal-output" id="terminal-output">[SYSTEM BOOT] Multi-Agent State Graph Initialized...
+├── Cluster: ashish-ai-agent-v2.6 :: production-cluster
+├── Active Engine: Groq / Llama-3.3-70B (&lt; 28ms TTFT)
+├── Core Merged Tools: SynapseKit AWS Lambda (PR #1056), Podman Sandbox (PR #1057)
+└── Status: Ready. Click any preset chip above or type any question into the prompt line below!
+Tip: Try typing 'help', 'whoami', 'stack', 'rag', 'projects', or 'contact'.</pre>
+              </div>
+            </div>
+
+            <!-- Active CLI Input Line Inside Terminal Screen -->
+            <div class="terminal-active-line" id="terminal-active-line">
+              <span class="terminal-input-prefix">visitor@ashish-ai:~$</span>
+              <input type="text" id="terminal-user-input" class="terminal-user-input" placeholder="Type any question or command here and press Enter..." aria-label="Terminal Prompt Input" autocomplete="off" spellcheck="false" autofocus>
+              <button id="terminal-send-btn" class="terminal-send-btn" title="Run command (Enter)">
+                <i class="fas fa-arrow-turn-down-left"></i> Run ↵
+              </button>
+            </div>
+          </div>
+
+          <!-- Bottom Telemetry Bar -->
+          <div class="terminal-telemetry-bar">
+            <span>Tokens: <strong id="telemetry-token-count">318</strong></span>
+            <span>Speed: <strong>138 tok/s</strong></span>
+            <span>Cost: <strong>$0.000 (Open Weights)</strong></span>
+            <span>Grounding: <strong>100% Deterministic</strong></span>
+            <span>Citations: <strong style="color: #34d399;">Grounded</strong></span>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================================================
+       05. OPEN SOURCE & MERGED CONTRIBUTIONS HUB
+       Clean, Modular & Live-Syncing Merged Framework PRs Showcase
+       ======================================================================== -->
+  <section id="intelligence" class="open-intelligence-section">
+    <div class="container">
+      
+      <div style="margin-bottom: 2.5rem; text-align: center;">
+        <div class="section-tag" style="background: rgba(15, 22, 41, 0.85); border-color: rgba(255, 255, 255, 0.12); margin: 0 auto 1.25rem;">
+          <span class="pulse-dot"></span>
+          <span>Open Source Ecosystem</span>
+        </div>
+        <h2 class="section-title" style="color: #ffffff;">
+          Building in the Open &amp; <span class="gradient-text">Merged Contributions</span>
+        </h2>
+        <p class="section-subtitle" style="color: #94a3b8; margin: 0 auto; max-width: 780px;">
+          Direct merged contributions to production AI frameworks, serverless orchestration tools, and containerized security runtimes.
+        </p>
+      </div>
+
+      <!-- Real-time Metrics & GitHub Sync Bar -->
+      <div class="os-metrics-strip">
+        <div class="os-metric-item">
+          <span class="os-metric-num" id="os-pr-count">7+</span>
+          <span class="os-metric-label"><i class="fas fa-code-merge" style="color: #a855f7;"></i> Merged PRs</span>
+        </div>
+        <div class="os-metric-divider"></div>
+        <div class="os-metric-item">
+          <span class="os-metric-num" id="os-lines-count">1,916+</span>
+          <span class="os-metric-label"><i class="fas fa-code" style="color: #38bdf8;"></i> Lines Merged</span>
+        </div>
+        <div class="os-metric-divider"></div>
+        <div class="os-metric-item">
+          <span class="os-metric-num">100%</span>
+          <span class="os-metric-label"><i class="fas fa-check-double" style="color: #34d399;"></i> Review Approval</span>
+        </div>
+        <div class="os-metric-divider"></div>
+        <div class="os-metric-item">
+          <span class="os-metric-num" id="os-repos-count">3 Repositories</span>
+          <span class="os-metric-label"><i class="fas fa-layer-group" style="color: #f59e0b;"></i> Projects Contributed</span>
+        </div>
+        <div class="os-metric-divider"></div>
+        <div class="os-metric-sync">
+          <a href="https://github.com/ramashishmaurya" target="_blank" class="os-github-sync-pill">
+            <span class="pulse-dot"></span>
+            <span>@ramashishmaurya</span>
+            <i class="fas fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Controls: View Switcher & Top Topics Filter -->
+      <div class="os-controls-wrap">
         
-            if (moreProjects.classList.contains("hidden")) {
-                moreProjects.classList.remove("hidden");
-                toggleText.textContent = "Show Less";
-                toggleIcon.classList.remove("fa-arrow-down");
-                toggleIcon.classList.add("fa-arrow-up");
-            } else {
-                moreProjects.classList.add("hidden");
-                toggleText.textContent = "View Older Projects";
-                toggleIcon.classList.remove("fa-arrow-up");
-                toggleIcon.classList.add("fa-arrow-down");
-            }
-        }
-    </script>
+        <div class="os-controls-header">
+          <!-- View Mode Toggle: By Project (scalable) vs Recent Highlights -->
+          <div class="os-view-toggle">
+            <button class="os-toggle-btn active" data-view="projects" id="toggle-view-projects">
+              <i class="fas fa-boxes-stacked"></i>
+              <span>By Project &amp; Repository</span>
+              <span class="os-topic-count" id="os-toggle-projects-count">3</span>
+            </button>
+            <button class="os-toggle-btn" data-view="prs" id="toggle-view-prs">
+              <i class="fas fa-code-merge"></i>
+              <span>Recent PR Highlights</span>
+              <span class="os-topic-count" id="os-toggle-prs-count">Top 3</span>
+            </button>
+          </div>
+
+          <div style="font-size: 0.85rem; color: #94a3b8; display: flex; align-items: center; gap: 0.5rem;">
+            <i class="fas fa-shield-halved" style="color: #34d399;"></i>
+            <span>Scalable Architecture: Contributions Grouped by Project &amp; Topic</span>
+          </div>
+        </div>
+
+        <!-- Top Topics Matrix Bar -->
+        <div class="os-topics-bar" id="os-topics-bar">
+          <span class="os-topics-label"><i class="fas fa-tags"></i> Top Topics:</span>
+          <button class="os-topic-pill active" data-topic="all">
+            <i class="fas fa-layer-group"></i> All Topics <span class="os-topic-count">7</span>
+          </button>
+          <button class="os-topic-pill" data-topic="agents">
+            <i class="fas fa-brain"></i> Agentic AI &amp; Multi-Agent <span class="os-topic-count">3</span>
+          </button>
+          <button class="os-topic-pill" data-topic="security">
+            <i class="fas fa-shield-halved"></i> Container Security &amp; Sandboxes <span class="os-topic-count">2</span>
+          </button>
+          <button class="os-topic-pill" data-topic="serverless">
+            <i class="fas fa-cloud"></i> Serverless &amp; AWS Lambda <span class="os-topic-count">2</span>
+          </button>
+          <button class="os-topic-pill" data-topic="vector">
+            <i class="fas fa-database"></i> Vector Search &amp; Hybrid RAG <span class="os-topic-count">2</span>
+          </button>
+          <button class="os-topic-pill" data-topic="devops">
+            <i class="fas fa-code-branch"></i> CI/CD &amp; DevOps <span class="os-topic-count">1</span>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- VIEW 1: Aggregated Project Contribution Cards (Scalable to 100+ PRs) -->
+      <div class="os-projects-grid" id="os-projects-container">
+        
+        <!-- Project 1: SynapseKit -->
+        <div class="os-project-card" data-category="agents" data-topics="agents,serverless,security,devops">
+          <div class="os-project-header">
+            <div class="os-project-title-group">
+              <h3><i class="fas fa-cube" style="color: #38bdf8;"></i> SynapseKit</h3>
+              <span class="os-project-repo-slug">SynapseKit / Framework</span>
+            </div>
+            <span class="os-project-contrib-badge">
+              <i class="fas fa-code-merge"></i> 3 Merged PRs
+            </span>
+          </div>
+
+          <p class="os-project-desc">
+            Autonomous multi-agent orchestration framework. Architected serverless async tool execution layers for AWS Lambda, rootless Podman security sandboxes, and automated GitLab CI/CD hooks.
+          </p>
+
+          <div class="os-project-topics-section">
+            <div class="os-topics-section-title">Top Contribution Topics</div>
+            <div class="os-project-topics-pills">
+              <span class="os-project-topic-tag">Agentic AI</span>
+              <span class="os-project-topic-tag">AWS Lambda</span>
+              <span class="os-project-topic-tag">Podman Sandboxes</span>
+              <span class="os-project-topic-tag">Linux Seccomp</span>
+              <span class="os-project-topic-tag">CI/CD Webhooks</span>
+            </div>
+          </div>
+
+          <div class="os-project-prs-preview">
+            <div class="os-prs-preview-title">
+              <span>Merged Pull Requests</span>
+              <span style="color: #34d399; font-size: 0.72rem;">100% Approved</span>
+            </div>
+            <div class="os-prs-chips-list">
+              <a href="https://github.com/ramashishmaurya" target="_blank" class="os-pr-mini-chip">
+                <span><span class="os-pr-mini-id">#1056</span> AWS Lambda Tool Orchestration</span>
+                <span class="os-pr-mini-diff">+384 lines</span>
+              </a>
+              <a href="https://github.com/ramashishmaurya" target="_blank" class="os-pr-mini-chip">
+                <span><span class="os-pr-mini-id">#1057</span> Podman Rootless Sandbox Runtime</span>
+                <span class="os-pr-mini-diff">+512 lines</span>
+              </a>
+              <a href="https://github.com/ramashishmaurya" target="_blank" class="os-pr-mini-chip">
+                <span><span class="os-pr-mini-id">#1061</span> GitLab Webhook &amp; Pipeline Agent</span>
+                <span class="os-pr-mini-diff">+290 lines</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="os-project-metrics-row">
+            <span><strong>+1,186</strong> lines</span>
+            <span>•</span>
+            <span><strong>Core</strong> Contributor</span>
+            <span>•</span>
+            <span><strong>1.4k★</strong> Framework</span>
+          </div>
+
+          <div class="os-project-card-footer">
+            <a href="https://github.com/ramashishmaurya" target="_blank" class="os-repo-btn">
+              <span>Explore SynapseKit on GitHub</span>
+              <i class="fas fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 2: LangGraph Ecosystem -->
+        <div class="os-project-card" data-category="agents" data-topics="agents,workflows">
+          <div class="os-project-header">
+            <div class="os-project-title-group">
+              <h3><i class="fas fa-diagram-project" style="color: #c084fc;"></i> LangGraph Ecosystem</h3>
+              <span class="os-project-repo-slug">LangChain-AI / LangGraph-Ecosystem</span>
+            </div>
+            <span class="os-project-contrib-badge">
+              <i class="fas fa-code-merge"></i> 2 Merged PRs
+            </span>
+          </div>
+
+          <p class="os-project-desc">
+            Stateful cyclic multi-agent graph workflows. Authored async state persistence checkpoint handlers and dynamic routing error boundaries to guarantee 100% deterministic graph traversals.
+          </p>
+
+          <div class="os-project-topics-section">
+            <div class="os-topics-section-title">Top Contribution Topics</div>
+            <div class="os-project-topics-pills">
+              <span class="os-project-topic-tag">Stateful Graphs</span>
+              <span class="os-project-topic-tag">Checkpointers</span>
+              <span class="os-project-topic-tag">Tool Calling</span>
+              <span class="os-project-topic-tag">Async Streaming</span>
+              <span class="os-project-topic-tag">Error Boundaries</span>
+            </div>
+          </div>
+
+          <div class="os-project-prs-preview">
+            <div class="os-prs-preview-title">
+              <span>Merged Pull Requests</span>
+              <span style="color: #34d399; font-size: 0.72rem;">100% Approved</span>
+            </div>
+            <div class="os-prs-chips-list">
+              <a href="https://github.com/ramashishmaurya" target="_blank" class="os-pr-mini-chip">
+                <span><span class="os-pr-mini-id">#842</span> Async State Checkpointing Fallback</span>
+                <span class="os-pr-mini-diff">+240 lines</span>
+              </a>
+              <a href="https://github.com/ramashishmaurya" target="_blank" class="os-pr-mini-chip">
+                <span><span class="os-pr-mini-id">#915</span> Custom Tool Routing Error Boundaries</span>
+                <span class="os-pr-mini-diff">+180 lines</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="os-project-metrics-row">
+            <span><strong>+420</strong> lines</span>
+            <span>•</span>
+            <span><strong>Graph</strong> Contributor</span>
+            <span>•</span>
+            <span><strong>5.8k★</strong> Ecosystem</span>
+          </div>
+
+          <div class="os-project-card-footer">
+            <a href="https://github.com/ramashishmaurya" target="_blank" class="os-repo-btn">
+              <span>Explore LangGraph on GitHub</span>
+              <i class="fas fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 3: Qdrant & Vector RAG Utilities -->
+        <div class="os-project-card" data-category="vector" data-topics="vector,retrieval">
+          <div class="os-project-header">
+            <div class="os-project-title-group">
+              <h3><i class="fas fa-database" style="color: #34d399;"></i> Qdrant Vector Tools</h3>
+              <span class="os-project-repo-slug">Qdrant / Ecosystem-Tools</span>
+            </div>
+            <span class="os-project-contrib-badge">
+              <i class="fas fa-code-merge"></i> 2 Merged PRs
+            </span>
+          </div>
+
+          <p class="os-project-desc">
+            Enterprise semantic retrieval connectors. Engineered asynchronous Qdrant hybrid retrieval clients pairing dense cosine similarity with sparse BM25 payload metadata filters.
+          </p>
+
+          <div class="os-project-topics-section">
+            <div class="os-topics-section-title">Top Contribution Topics</div>
+            <div class="os-project-topics-pills">
+              <span class="os-project-topic-tag">Hybrid Search</span>
+              <span class="os-project-topic-tag">Qdrant DB</span>
+              <span class="os-project-topic-tag">HNSW Graph</span>
+              <span class="os-project-topic-tag">Payload Filtering</span>
+              <span class="os-project-topic-tag">FastAPI</span>
+            </div>
+          </div>
+
+          <div class="os-project-prs-preview">
+            <div class="os-prs-preview-title">
+              <span>Merged Pull Requests</span>
+              <span style="color: #34d399; font-size: 0.72rem;">100% Approved</span>
+            </div>
+            <div class="os-prs-chips-list">
+              <a href="https://github.com/ramashishmaurya" target="_blank" class="os-pr-mini-chip">
+                <span><span class="os-pr-mini-id">#412</span> FastAPI Async Qdrant Hybrid Client</span>
+                <span class="os-pr-mini-diff">+190 lines</span>
+              </a>
+              <a href="https://github.com/ramashishmaurya" target="_blank" class="os-pr-mini-chip">
+                <span><span class="os-pr-mini-id">#468</span> Batch Vector Upsert Chunking Helper</span>
+                <span class="os-pr-mini-diff">+120 lines</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="os-project-metrics-row">
+            <span><strong>+310</strong> lines</span>
+            <span>•</span>
+            <span><strong>Vector</strong> Contributor</span>
+            <span>•</span>
+            <span><strong>2.1k★</strong> Tooling</span>
+          </div>
+
+          <div class="os-project-card-footer">
+            <a href="https://github.com/ramashishmaurya" target="_blank" class="os-repo-btn">
+              <span>Explore Qdrant Tools on GitHub</span>
+              <i class="fas fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- VIEW 2: Recent Merged PR Highlights (Top 3 Capped View - never cluttered) -->
+      <div class="os-pr-cards-grid" id="os-pr-cards-container" style="display: none;">
+        
+        <div class="pr-full-card" data-category="serverless" data-topics="agents,serverless">
+          <div class="pr-card-header">
+            <div class="pr-tag-group">
+              <span class="pr-merged-pill"><i class="fas fa-code-merge"></i> MERGED #1056</span>
+              <span class="pr-repo-pill">SynapseKit / CloudTools</span>
+            </div>
+            <span class="pr-date">Merged Oct 2024</span>
+          </div>
+          <h4>AWS Lambda Tool Orchestration for Autonomous Agents</h4>
+          <p>
+            Architected an asynchronous tool interface enabling LangGraph and SynapseKit agents to trigger, monitor, and retrieve payloads from serverless AWS Lambda functions with strict Pydantic JSON validation.
+          </p>
+          <div class="pr-stats-row">
+            <span class="pr-diff-add">+384 lines</span>
+            <span class="pr-diff-del">-22 lines</span>
+            <span class="pr-files">6 files changed</span>
+            <span class="pr-commit"><i class="fas fa-code-branch"></i> feat/aws-lambda-tool</span>
+          </div>
+          <div class="pr-tech-tags">
+            <span>Python 3.12</span>
+            <span>Boto3</span>
+            <span>AWS Lambda</span>
+            <span>AsyncIO</span>
+            <span>Pydantic v2</span>
+          </div>
+          <a href="https://github.com/ramashishmaurya" target="_blank" class="pr-action-link">
+            <span>View Merged PR on GitHub</span>
+            <i class="fas fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
+
+        <div class="pr-full-card" data-category="security" data-topics="agents,security">
+          <div class="pr-card-header">
+            <div class="pr-tag-group">
+              <span class="pr-merged-pill"><i class="fas fa-code-merge"></i> MERGED #1057</span>
+              <span class="pr-repo-pill">SynapseKit / Sandboxes</span>
+            </div>
+            <span class="pr-date">Merged Nov 2024</span>
+          </div>
+          <h4>Podman Rootless Sandbox Runtime for Untrusted Code</h4>
+          <p>
+            Designed and implemented a daemonless, rootless container execution runtime using Podman. Prevents prompt-injection attacks and arbitrary file access during dynamic code evaluation.
+          </p>
+          <div class="pr-stats-row">
+            <span class="pr-diff-add">+512 lines</span>
+            <span class="pr-diff-del">-45 lines</span>
+            <span class="pr-files">8 files changed</span>
+            <span class="pr-commit"><i class="fas fa-code-branch"></i> feat/podman-sandbox-runtime</span>
+          </div>
+          <div class="pr-tech-tags">
+            <span>Podman</span>
+            <span>Linux Seccomp</span>
+            <span>Docker API</span>
+            <span>Python Sandboxing</span>
+            <span>Security</span>
+          </div>
+          <a href="https://github.com/ramashishmaurya" target="_blank" class="pr-action-link">
+            <span>View Merged PR on GitHub</span>
+            <i class="fas fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
+
+        <div class="pr-full-card" data-category="devops" data-topics="devops">
+          <div class="pr-card-header">
+            <div class="pr-tag-group">
+              <span class="pr-merged-pill"><i class="fas fa-code-merge"></i> MERGED #1061</span>
+              <span class="pr-repo-pill">SynapseKit / CI-CD</span>
+            </div>
+            <span class="pr-date">Merged Dec 2024</span>
+          </div>
+          <h4>GitLab Webhook &amp; Automated Pipeline Integration Agent</h4>
+          <p>
+            Engineered an event-driven agent module that receives GitLab webhook events on merge request opens, coordinates unit tests across parallel runners, and automatically posts AI code review feedback.
+          </p>
+          <div class="pr-stats-row">
+            <span class="pr-diff-add">+290 lines</span>
+            <span class="pr-diff-del">-16 lines</span>
+            <span class="pr-files">4 files changed</span>
+            <span class="pr-commit"><i class="fas fa-code-branch"></i> feat/gitlab-agent-hooks</span>
+          </div>
+          <div class="pr-tech-tags">
+            <span>GitLab REST API</span>
+            <span>FastAPI</span>
+            <span>Webhooks</span>
+            <span>CI/CD</span>
+            <span>Automation</span>
+          </div>
+          <a href="https://github.com/ramashishmaurya" target="_blank" class="pr-action-link">
+            <span>View Merged PR on GitHub</span>
+            <i class="fas fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Real-time GitHub Sync Notification Bar -->
+      <div class="os-sync-status-bar">
+        <div class="os-sync-info">
+          <i class="fab fa-github" style="font-size: 1.25rem; color: #ffffff;"></i>
+          <span>Live GitHub Sync Active: Any newly merged PR on <strong>@ramashishmaurya</strong> will automatically aggregate into these project hubs.</span>
+        </div>
+        <a href="https://github.com/ramashishmaurya?tab=repositories" target="_blank" class="os-view-repos-btn">
+          Explore All GitHub Repos <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+
+  <!-- ========================================================================
+       06. ABOUT SECTION & 5-STEP HOW I DELIVER PIPELINE
+       ======================================================================== -->
+  <section id="about" class="about-section">
+    <div class="container">
+      
+      <div class="about-grid">
+        
+        <!-- Left: Code IDE Showcase -->
+        <div class="code-card">
+          <div class="code-header">
+            <div class="code-dots">
+              <span class="code-dot dot-red"></span>
+              <span class="code-dot dot-yellow"></span>
+              <span class="code-dot dot-green"></span>
+            </div>
+            <span class="code-title">ashish.config.ts</span>
+          </div>
+          <pre class="code-body"><code><span class="code-keyword">const</span> <span class="code-var">ashish</span> = {
+  <span class="code-prop">role</span>: <span class="code-str">'AI &amp; Data Science Engineer'</span>,
+  <span class="code-prop">education</span>: <span class="code-str">'B.Sc. Data Science, University of Mumbai'</span>,
+  <span class="code-prop">location</span>: <span class="code-str">'Mumbai, Maharashtra, India'</span>,
+  <span class="code-prop">builds</span>: [
+    <span class="code-str">'Agentic Workflows'</span>, 
+    <span class="code-str">'RAG Architectures'</span>, 
+    <span class="code-str">'FastAPI Backends'</span>, 
+    <span class="code-str">'Predictive ML Models'</span>
+  ],
+  <span class="code-prop">ships</span>: [
+    <span class="code-str">'IntelliDoc RAG'</span>, 
+    <span class="code-str">'Financial Research Engine'</span>, 
+    <span class="code-str">'SynapseKit Modules'</span>
+  ],
+  <span class="code-prop">motto</span>: <span class="code-str">'Engineering AI beyond notebooks into scalable reality'</span>
+};<span class="code-cursor"></span></code></pre>
+        </div>
+
+        <!-- Right: Bio Story & Highlights -->
+        <div class="about-bio-wrap">
+          <div class="section-tag">
+            <span class="pulse-dot"></span>
+            <span>About Me</span>
+          </div>
+          
+          <p class="about-bio-text">
+            I turn cutting-edge AI research into production-grade systems people rely on every day. 
+            My work sits where deep learning meets solid software engineering: autonomous agents that 
+            reason, semantic retrieval that stays grounded with zero hallucinations, and low-latency 
+            backends built to scale effortlessly.
+          </p>
+
+          <div class="about-pills-row">
+            <span class="about-pill"><i class="fas fa-location-dot"></i> Mumbai, Maharashtra, India</span>
+            <span class="about-pill"><i class="fas fa-graduation-cap"></i> B.Sc. Data Science (Univ. of Mumbai)</span>
+            <span class="about-pill"><i class="fas fa-code-branch"></i> Open Source Contributor</span>
+            <span class="about-pill"><i class="fas fa-rocket"></i> 8+ Production Projects</span>
+          </div>
+
+          <p class="about-bio-text" style="font-size: 1.02rem; color: var(--text-secondary);">
+            Whether it's designing multi-agent state graphs using LangGraph, deploying vector search with Qdrant, 
+            or architecting REST APIs with FastAPI and PostgreSQL, I prioritize clean code, deterministic reliability, 
+            and real-world business impact.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- How I Deliver - 5 Step Timeline Track -->
+      <div class="deliver-block">
+        <h5 class="deliver-label">How I deliver — End-to-End Engineering Pipeline</h5>
+        
+        <div class="deliver-steps-track">
+          
+          <div class="deliver-step">
+            <div class="step-circle">01</div>
+            <h4>Discovery &amp; Data</h4>
+            <p>Problem formulation, data ingestion, EDA, and defining clear quantitative success metrics.</p>
+          </div>
+
+          <div class="deliver-step">
+            <div class="step-circle">02</div>
+            <h4>Modeling &amp; LLMs</h4>
+            <p>Selecting optimal models (Groq, HuggingFace, Scikit-learn), fine-tuning prompts &amp; loss functions.</p>
+          </div>
+
+          <div class="deliver-step">
+            <div class="step-circle">03</div>
+            <h4>Agents &amp; RAG</h4>
+            <p>LangGraph state graphs, Qdrant vector indexing, hybrid search chunking &amp; grounding guardrails.</p>
+          </div>
+
+          <div class="deliver-step">
+            <div class="step-circle">04</div>
+            <h4>High-Speed APIs</h4>
+            <p>Asynchronous FastAPI microservices, WebSockets streaming, Celery job queues &amp; Redis caching.</p>
+          </div>
+
+          <div class="deliver-step">
+            <div class="step-circle">05</div>
+            <h4>Production &amp; Ops</h4>
+            <p>Docker containerization, MLflow tracking, AWS deployment (EC2/Lambda), and monitoring.</p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================================================
+       07. SERVICES & CAPABILITIES SECTION (MASTER-DETAIL SELECTOR)
+       ======================================================================== -->
+  <section id="services" class="services-section">
+    <div class="container">
+      
+      <div class="services-header-wrap">
+        <div>
+          <div class="section-tag">
+            <span class="pulse-dot"></span>
+            <span>Services &amp; Capabilities</span>
+          </div>
+          <h2 class="section-title">Pick a problem.<br><span class="gradient-text">I'll build the system.</span></h2>
+        </div>
+        <p class="section-subtitle" style="margin-bottom: 0;">
+          Six specialized areas where I can help you ship production-ready AI and software solutions. Select any area to inspect deliverables.
+        </p>
+      </div>
+
+      <div class="services-layout">
+        
+        <!-- Left: Interactive Master Buttons -->
+        <div class="services-list">
+          
+          <button class="service-item-btn active" data-index="0">
+            <div class="item-left">
+              <span class="item-num">01</span>
+              <span class="item-title">Agentic AI &amp; Multi-Agent Workflows</span>
+            </div>
+            <i class="fas fa-arrow-right item-arrow"></i>
+          </button>
+
+          <button class="service-item-btn" data-index="1">
+            <div class="item-left">
+              <span class="item-num">02</span>
+              <span class="item-title">Enterprise RAG &amp; Document Intelligence</span>
+            </div>
+            <i class="fas fa-arrow-right item-arrow"></i>
+          </button>
+
+          <button class="service-item-btn" data-index="2">
+            <div class="item-left">
+              <span class="item-num">03</span>
+              <span class="item-title">High-Performance APIs &amp; Backend</span>
+            </div>
+            <i class="fas fa-arrow-right item-arrow"></i>
+          </button>
+
+          <button class="service-item-btn" data-index="3">
+            <div class="item-left">
+              <span class="item-num">04</span>
+              <span class="item-title">Machine Learning &amp; Predictive Systems</span>
+            </div>
+            <i class="fas fa-arrow-right item-arrow"></i>
+          </button>
+
+          <button class="service-item-btn" data-index="4">
+            <div class="item-left">
+              <span class="item-num">05</span>
+              <span class="item-title">MLOps, Containers &amp; Cloud Deployment</span>
+            </div>
+            <i class="fas fa-arrow-right item-arrow"></i>
+          </button>
+
+          <button class="service-item-btn" data-index="5">
+            <div class="item-left">
+              <span class="item-num">06</span>
+              <span class="item-title">Business Intelligence &amp; Dashboards</span>
+            </div>
+            <i class="fas fa-arrow-right item-arrow"></i>
+          </button>
+
+        </div>
+
+        <!-- Right: Dynamic Service Detail Preview Card -->
+        <div class="service-preview-card" id="service-preview-card">
+          <div class="preview-top">
+            <div class="preview-icon-box">
+              <i id="preview-icon" class="fas fa-brain"></i>
+            </div>
+            <span id="preview-num" class="preview-watermark-num">01</span>
+          </div>
+
+          <h3 id="preview-title" class="preview-title">Agentic AI &amp; Multi-Agent Workflows</h3>
+          <p id="preview-desc" class="preview-desc">
+            Autonomous multi-agent orchestration where specialized agents coordinate to solve complex workflows, verify sources, and execute actions with tool use.
+          </p>
+
+          <span class="preview-section-label">WHAT YOU GET</span>
+          <ul id="preview-features" class="preview-features-list">
+            <li><i class="fas fa-check-circle"></i> <span>LangGraph graph-based stateful agent workflows</span></li>
+            <li><i class="fas fa-check-circle"></i> <span>Specialized agent teams (Search, Analyst, Risk, Editor)</span></li>
+            <li><i class="fas fa-check-circle"></i> <span>Serverless execution tools &amp; sandboxed environments</span></li>
+            <li><i class="fas fa-check-circle"></i> <span>Human-in-the-loop controls &amp; deterministic safeguards</span></li>
+          </ul>
+
+          <div id="preview-tags" class="preview-tech-tags">
+            <span>LangGraph</span>
+            <span>Groq</span>
+            <span>LangChain</span>
+            <span>Python</span>
+            <span>SynapseKit</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================================================
+       08. FEATURED PROJECTS SHOWCASE (CURATED 2 GENAI & 2 ML FLAGSHIP PROJECTS)
+       ======================================================================== -->
+  <section id="projects" class="projects-section">
+    <div class="container">
+      
+      <div style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <div class="section-tag">
+          <span class="pulse-dot"></span>
+          <span>Featured Work</span>
+        </div>
+        <h2 class="section-title">Engineered to <span class="gradient-text">Perform</span></h2>
+        <p class="section-subtitle" style="margin: 0 auto 2.5rem;">
+          Flagship Generative AI agent workflows and production machine learning architectures built for real-world reliability.
+        </p>
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div class="projects-filter-bar">
+        <button class="filter-btn active" data-filter="all">All Projects (4)</button>
+        <button class="filter-btn" data-filter="ai">Generative AI &amp; Agents (2)</button>
+        <button class="filter-btn" data-filter="ml">Machine Learning (2)</button>
+      </div>
+
+      <!-- Project Cards Grid -->
+      <div class="projects-grid">
+        
+        <!-- Project 1: IntelliDoc RAG (Generative AI) -->
+        <div class="project-card" data-category="ai">
+          <div class="project-browser-frame">
+            <div class="browser-dots">
+              <span class="browser-dot dot-red"></span>
+              <span class="browser-dot dot-yellow"></span>
+              <span class="browser-dot dot-green"></span>
+            </div>
+            <div class="browser-address">
+              <span>intellidoc-rag.local</span>
+              <i class="fas fa-lock"></i>
+            </div>
+          </div>
+          <div class="project-media">
+            <img src="text-summarizer.png" alt="IntelliDoc RAG">
+            <div class="project-badge-overlay">
+              <span class="card-pill live"><i class="fas fa-circle"></i> Live Streaming</span>
+              <span class="card-pill github">Featured</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <span class="project-meta-line">01 / 04 • GENERATIVE AI &amp; RAG</span>
+            <h3 class="project-title">IntelliDoc RAG</h3>
+            <p class="project-desc">
+              Full-stack AI assistant enabling users to upload multi-page technical PDFs and query them in natural language. Features real-time token streaming via WebSockets, asynchronous Celery document ingestion, and Qdrant vector retrieval.
+            </p>
+            <div class="project-role-info">
+              <span>Role:</span> <strong>Full-Stack AI Engineer</strong>
+            </div>
+            <div class="project-tech-pills">
+              <span>React</span>
+              <span>FastAPI</span>
+              <span>LangChain</span>
+              <span>Qdrant</span>
+              <span>Docker</span>
+              <span>WebSockets</span>
+              <span>Redis</span>
+            </div>
+            <div class="project-links-row">
+              <a href="https://github.com/ramashishmaurya/pdf-rag-chatbot" target="_blank" rel="noopener noreferrer" class="project-link-btn">
+                <i class="fab fa-github"></i> View Repository <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: Financial Research Multi-Agent Engine (Generative AI) -->
+        <div class="project-card" data-category="ai">
+          <div class="project-browser-frame">
+            <div class="browser-dots">
+              <span class="browser-dot dot-red"></span>
+              <span class="browser-dot dot-yellow"></span>
+              <span class="browser-dot dot-green"></span>
+            </div>
+            <div class="browser-address">
+              <span>financial-agents.ai</span>
+              <i class="fas fa-lock"></i>
+            </div>
+          </div>
+          <div class="project-media">
+            <img src="shutterstock_1203476287.jpg" alt="Financial Research Multi-Agent Engine">
+            <div class="project-badge-overlay">
+              <span class="card-pill live"><i class="fas fa-circle"></i> Multi-Agent</span>
+              <span class="card-pill github">LangGraph</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <span class="project-meta-line">02 / 04 • AGENTIC AI &amp; WORKFLOWS</span>
+            <h3 class="project-title">Financial Research Engine</h3>
+            <p class="project-desc">
+              Multi-agent workflow orchestrating specialized AI agents (Search, Financial Analyst, Risk Assessor, and Executive Editor) using LangGraph and Groq LLMs to synthesize automated in-depth equity reports with zero latency.
+            </p>
+            <div class="project-role-info">
+              <span>Role:</span> <strong>Agent Architect &amp; Backend Engineer</strong>
+            </div>
+            <div class="project-tech-pills">
+              <span>LangGraph</span>
+              <span>Groq LLMs</span>
+              <span>FastAPI</span>
+              <span>PostgreSQL</span>
+              <span>Celery</span>
+              <span>Redis</span>
+              <span>AWS S3</span>
+            </div>
+            <div class="project-links-row">
+              <a href="https://github.com/ramashishmaurya" target="_blank" rel="noopener noreferrer" class="project-link-btn">
+                <i class="fab fa-github"></i> View Architecture <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3: Customer Segmentation for Banking (Machine Learning) -->
+        <div class="project-card" data-category="ml">
+          <div class="project-browser-frame">
+            <div class="browser-dots">
+              <span class="browser-dot dot-red"></span>
+              <span class="browser-dot dot-yellow"></span>
+              <span class="browser-dot dot-green"></span>
+            </div>
+            <div class="browser-address">
+              <span>banking-segmentation.onrender.com</span>
+              <i class="fas fa-lock"></i>
+            </div>
+          </div>
+          <div class="project-media">
+            <img src="customer-segmentation-social.png" alt="Customer Segmentation Project">
+            <div class="project-badge-overlay">
+              <span class="card-pill live"><i class="fas fa-circle"></i> Live on Render</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <span class="project-meta-line">03 / 04 • MACHINE LEARNING &amp; RFM</span>
+            <h3 class="project-title">Banking Customer Segmentation</h3>
+            <p class="project-desc">
+              Data analytics and unsupervised ML system empowering retail banking institutions to personalize services based on customer demographics, spending velocity, and RFM scores.
+            </p>
+            <div class="project-role-info">
+              <span>Role:</span> <strong>ML Engineer &amp; Data Analyst</strong>
+            </div>
+            <div class="project-tech-pills">
+              <span>Machine Learning</span>
+              <span>Power BI</span>
+              <span>SQL</span>
+              <span>Streamlit</span>
+              <span>Python</span>
+              <span>Render</span>
+            </div>
+            <div class="project-links-row">
+              <a href="https://github.com/ramashishmaurya/Project-Customer-Segmentation-for-Personalized-Banking-Services" target="_blank" rel="noopener noreferrer" class="project-link-btn">
+                <i class="fab fa-github"></i> Repository
+              </a>
+              <a href="https://project-customer-segmentation-for-pj24.onrender.com" target="_blank" rel="noopener noreferrer" class="project-link-btn" style="margin-left: auto;">
+                <i class="fas fa-arrow-up-right-from-square"></i> Live Demo
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4: Job Salary Prediction & MLflow Pipeline (Machine Learning) -->
+        <div class="project-card" data-category="ml">
+          <div class="project-browser-frame">
+            <div class="browser-dots">
+              <span class="browser-dot dot-red"></span>
+              <span class="browser-dot dot-yellow"></span>
+              <span class="browser-dot dot-green"></span>
+            </div>
+            <div class="browser-address">
+              <span>salary-mlflow-pipeline.app</span>
+              <i class="fas fa-lock"></i>
+            </div>
+          </div>
+          <div class="project-media">
+            <img src="Customer_Churn_Prediction_Models_in_Machine_Learning.png" alt="Job Salary Prediction Pipeline">
+            <div class="project-badge-overlay">
+              <span class="card-pill live"><i class="fas fa-circle"></i> MLOps Pipeline</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <span class="project-meta-line">04 / 04 • MLOPS &amp; PREDICTIVE MODELING</span>
+            <h3 class="project-title">Job Salary Prediction &amp; MLflow</h3>
+            <p class="project-desc">
+              End-to-end containerized machine learning pipeline predicting market salaries with high accuracy based on role, location, and seniority. Integrated MLflow for experiment tracking, hyperparameter logging, and model registry.
+            </p>
+            <div class="project-role-info">
+              <span>Role:</span> <strong>MLOps Engineer</strong>
+            </div>
+            <div class="project-tech-pills">
+              <span>Random Forest</span>
+              <span>XGBoost</span>
+              <span>MLflow</span>
+              <span>Docker</span>
+              <span>Streamlit</span>
+              <span>Scikit-learn</span>
+            </div>
+            <div class="project-links-row">
+              <a href="https://github.com/ramashishmaurya" target="_blank" rel="noopener noreferrer" class="project-link-btn">
+                <i class="fab fa-github"></i> View MLflow Pipeline <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Clean Action Footer: Link to all GitHub repositories -->
+      <div style="text-align: center; margin-top: 3rem;">
+        <a href="https://github.com/ramashishmaurya?tab=repositories" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.85rem 2rem;">
+          <i class="fab fa-github"></i> View All Repositories on GitHub <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================================================
+       09. TECHNICAL SKILLS & STACK MATRIX
+       ======================================================================== -->
+  <section id="skills" class="skills-section">
+    <div class="container">
+      
+      <div style="text-align: center; max-width: 650px; margin: 0 auto 3.5rem;">
+        <div class="section-tag">
+          <span class="pulse-dot"></span>
+          <span>Technical Arsenal</span>
+        </div>
+        <h2 class="section-title">Tools &amp; <span class="gradient-text">Technologies</span></h2>
+        <p class="section-subtitle" style="margin: 0 auto;">
+          The stack I leverage to build intelligent, autonomous, and resilient software systems.
+        </p>
+      </div>
+
+      <div class="skills-categories-grid">
+        
+        <!-- Category 1: Languages -->
+        <div class="skill-category-card">
+          <div class="category-icon-header">
+            <div class="category-icon"><i class="fas fa-code"></i></div>
+            <h3 class="category-title">Languages</h3>
+          </div>
+          <div class="skills-list">
+            <div class="skill-row">
+              <div class="skill-row-left">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+                <span>Python</span>
+              </div>
+              <span class="skill-tag-level">Advanced</span>
+            </div>
+            <div class="skill-row">
+              <div class="skill-row-left">
+                <i class="fas fa-database" style="color: #3b82f6;"></i>
+                <span>SQL</span>
+              </div>
+              <span class="skill-tag-level">Advanced</span>
+            </div>
+            <div class="skill-row">
+              <div class="skill-row-left">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg" alt="R">
+                <span>R</span>
+              </div>
+              <span class="skill-tag-level">Proficient</span>
+            </div>
+            <div class="skill-row">
+              <div class="skill-row-left">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
+                <span>JavaScript</span>
+              </div>
+              <span class="skill-tag-level">Intermediate</span>
+            </div>
+            <div class="skill-row">
+              <div class="skill-row-left">
+                <i class="fas fa-terminal" style="color: #10b981;"></i>
+                <span>Bash &amp; Linux</span>
+              </div>
+              <span class="skill-tag-level">Proficient</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category 2: AI & LLMs -->
+        <div class="skill-category-card">
+          <div class="category-icon-header">
+            <div class="category-icon"><i class="fas fa-brain"></i></div>
+            <h3 class="category-title">AI &amp; Generative AI</h3>
+          </div>
+          <div class="skills-list">
+            <div class="skill-row">
+              <div class="skill-row-left">
+                <i class="fas fa-project-diagram" style="color: #8b5cf6;"></i>
+                <span>LangGraph</span>
+              </div>
+              <span class="skill-tag-level">Advanced</span>
+            </div>
+            <div class="skill-row">
+              <div class="skill-row-left">
+                <i class="fas fa-link" style="color: #3b82f6;"></i>
+                <span>LangChain</span>
+              </div>
+              <span class="skill-tag-level">Advanced</span>
+            </div>
+            <div class="skill-row">
+              <div class="skill-row-left">
+                <i class="fas fa-magnifying-glass-chart" style="color: #10b981;"></i>
+                <span>RAG Systems</span>
+              </div>
+              <span class="skill-tag-level">Advanced</span>
+            </div>
+            <div class="skill-row">
+              <div class="skill-row-left">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="PyTorch">
+                <span>PyTorch &amp; HuggingFace</span>
+              </div>
+              <span class="skill-tag-level">Proficient</span>
+            </div>
+            <div class="skill-row">
+              <div class="skill-row-left">
+                <i class="fas fa-bolt" style="color: #f59e0b;"></i>
+                <span>Groq / Ollama</span>
+              </div>
+              <span class="skill-tag-level">Advanced</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category 3: Backend & Databases -->
+        <div class="skill-category-card">
+          <div class="category-icon-header">
+            <div class="category-icon"><i class="fas fa-server"></i></div>
+            <h3 class="category-title">Backend &amp; DB</h3>
+          </div>
+          <div class="skills-list">
+            <div class="skill-row">
+              <div class="skill-row-left">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" alt="FastAPI">
+                <span>FastAPI</span>
+              </div>
+              <span class="skill-tag-level">Advanced</span>
+            </div>
+            <div class="skill-row">
+              <div class="skill-row-left">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="Django">
+                <span>Django</span>
+              </div>
+              <span class="skill-tag-level">Advanced</span>
+            </div>
+            <div class="skill-row">
+              <div class="skill-row-left">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL">
+                <span>PostgreSQL</span>
+              </div>
+              <span class="skill-tag-level">Advanced</span>
+            </div>
+            <div class="skill-row">
+              <div class="skill-row-left">
+                <i class="fas fa-cube" style="color: #ef4444;"></i>
+                <span>Qdrant &amp; Chroma</span>
+              </div>
+              <span class="skill-tag-level">Advanced</span>
+            </div>
+            <div class="skill-row">
+              <div class="skill-row-left">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" alt="Redis">
+                <span>Redis &amp; Celery</span>
+              </div>
+              <span class="skill-tag-level">Proficient</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category 4: MLOps & Cloud -->
+        <div class="skill-category-card">
+          <div class="category-icon-header">
+            <div class="category-icon"><i class="fas fa-cloud"></i></div>
+            <h3 class="category-title">MLOps &amp; Cloud</h3>
+          </div>
+          <div class="skills-list">
+            <div class="skill-row">
+              <div class="skill-row-left">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker">
+                <span>Docker</span>
+              </div>
+              <span class="skill-tag-level">Advanced</span>
+            </div>
+            <div class="skill-row">
+              <div class="skill-row-left">
+                <i class="fas fa-chart-line" style="color: #3b82f6;"></i>
+                <span>MLflow</span>
+              </div>
+              <span class="skill-tag-level">Proficient</span>
+            </div>
+            <div class="skill-row">
+              <div class="skill-row-left">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS">
+                <span>AWS (Lambda, S3, EC2)</span>
+              </div>
+              <span class="skill-tag-level">Proficient</span>
+            </div>
+            <div class="skill-row">
+              <div class="skill-row-left">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git">
+                <span>Git &amp; GitHub Actions</span>
+              </div>
+              <span class="skill-tag-level">Advanced</span>
+            </div>
+            <div class="skill-row">
+              <div class="skill-row-left">
+                <i class="fas fa-chart-pie" style="color: #f59e0b;"></i>
+                <span>Power BI &amp; Streamlit</span>
+              </div>
+              <span class="skill-tag-level">Advanced</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================================================
+       10. CONTACT SECTION & WORKING FORM
+       ======================================================================== -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      
+      <div class="contact-grid">
+        
+        <!-- Left Column: Direct Contact Info -->
+        <div class="contact-info-col">
+          <div class="section-tag">
+            <span class="pulse-dot"></span>
+            <span>Let's Build Together</span>
+          </div>
+
+          <h2 class="section-title">Ready to launch your <span class="gradient-text">next AI system?</span></h2>
+          <p class="section-subtitle">
+            Whether you need a custom agent workflow, an enterprise RAG assistant, or a scalable backend API, I'm available for full-time opportunities and high-impact technical collaborations.
+          </p>
+
+          <div class="contact-cards-stack">
+            
+            <a href="mailto:ramashishmaurya738@gmail.com" class="contact-info-card">
+              <div class="contact-card-icon"><i class="fas fa-envelope"></i></div>
+              <div class="contact-card-details">
+                <h5>Email Address</h5>
+                <p>ramashishmaurya738@gmail.com</p>
+              </div>
+            </a>
+
+            <a href="tel:+919769295699" class="contact-info-card">
+              <div class="contact-card-icon"><i class="fas fa-phone"></i></div>
+              <div class="contact-card-details">
+                <h5>Phone / WhatsApp</h5>
+                <p>+91 9769295699</p>
+              </div>
+            </a>
+
+            <div class="contact-info-card">
+              <div class="contact-card-icon"><i class="fas fa-location-dot"></i></div>
+              <div class="contact-card-details">
+                <h5>Based In</h5>
+                <p>Mumbai, Maharashtra, India</p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Social Buttons -->
+          <div class="social-links" style="margin-top: 1rem;">
+            <a href="https://www.linkedin.com/in/ashishmaurya09/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="LinkedIn">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://github.com/ramashishmaurya" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="GitHub">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="https://x.com/ashishmaurya02" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Twitter">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="Ashish_Maurya_Resume.pdf" download="Ashish_Maurya_Resume.pdf" class="social-btn" title="Download Resume" aria-label="Resume">
+              <i class="fas fa-file-arrow-down"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Column: Interactive Contact Form -->
+        <div class="contact-form-wrap">
+          <h3 style="font-size: 1.8rem; margin-bottom: 0.5rem;">Send a Message</h3>
+          <p style="color: var(--text-secondary); margin-bottom: 2rem;">I'll get back to you within 24 hours.</p>
+
+          <form id="contact-form" class="contact-form" action="https://formsubmit.co/ramashishmaurya738@gmail.com" method="POST">
+            <!-- Anti-Spam Hidden Fields -->
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_subject" value="New Portfolio Message for Ashish Maurya">
+            <input type="hidden" name="_template" value="table">
+
+            <div class="form-group">
+              <label for="form-name">Your Name</label>
+              <input type="text" id="form-name" name="name" class="form-control" placeholder="e.g. Rahul Sharma" required>
+            </div>
+
+            <div class="form-group">
+              <label for="form-email">Your Email</label>
+              <input type="email" id="form-email" name="email" class="form-control" placeholder="you@company.com" required>
+            </div>
+
+            <div class="form-group">
+              <label for="form-subject">Subject</label>
+              <input type="text" id="form-subject" name="subject" class="form-control" placeholder="Project Inquiry / Job Opportunity" required>
+            </div>
+
+            <div class="form-group">
+              <label for="form-message">Message</label>
+              <textarea id="form-message" name="message" class="form-control" placeholder="Describe your project, timeline, or open role..." required></textarea>
+            </div>
+
+            <button type="submit" class="form-btn-submit">
+              <i class="fas fa-paper-plane" style="margin-right: 0.5rem;"></i> Send Message
+            </button>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================================================
+       11. FOOTER
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <span class="footer-status-pill">
+            <span class="pulse-dot"></span>
+            <span>Available for Hire &amp; AI Roles</span>
+          </span>
+          <span class="footer-copy">© 2026 Ashish Maurya. Built with passion &amp; precision.</span>
+        </div>
+
+        <button id="back-to-top" class="back-to-top-btn" aria-label="Back to Top" title="Back to top">
+          <i class="fas fa-arrow-up"></i>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Central Content & Configuration Data -->
+  <script src="portfolio-data.js"></script>
+  <!-- Interactive Engine & Logic -->
+  <script src="script.js"></script>
 </body>
 </html>
