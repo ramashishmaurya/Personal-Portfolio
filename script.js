@@ -1,753 +1,321 @@
 /**
- * ============================================================================
- * ASHISH MAURYA | PORTFOLIO SCRIPTS
- * Interactive AI Agent Console (Live Input + Streaming Engine)
- * Multi-Agent Graph Architecture & Services Master-Detail Selector
- * ============================================================================
+ * ASHISH MAURYA — PERSONAL PORTFOLIO SCRIPTS
+ * Minimalist & high-performance logic inspired by sakshii.tech
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  // 1. Live Local Clock
+  initLiveClock();
 
-  /* --------------------------------------------------------------------------
-     01. THEME SWITCHER (Dark & Light Mode with LocalStorage)
-     -------------------------------------------------------------------------- */
-  const themeToggleBtn = document.getElementById('theme-toggle');
+  // 2. Theme Toggle (Dark / Light)
+  initThemeToggle();
+
+  // 3. Email Copy with Floating Toast
+  initEmailCopy();
+
+  // 4. Interactive Terminal CLI
+  initTerminal();
+});
+
+/* ==========================================================================
+   1. LIVE LOCAL CLOCK (Updating every second)
+   ========================================================================== */
+function initLiveClock() {
+  const clockEl = document.getElementById('live-time');
+  if (!clockEl) return;
+
+  function updateClock() {
+    const now = new Date();
+    // Format options: 12-hour format with AM/PM
+    const timeString = now.toLocaleTimeString('en-US', {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: true
+    });
+    clockEl.textContent = timeString;
+  }
+
+  updateClock();
+  setInterval(updateClock, 1000);
+}
+
+/* ==========================================================================
+   2. THEME TOGGLE (Persistent Dark / Light)
+   ========================================================================== */
+function initThemeToggle() {
+  const toggleBtn = document.getElementById('theme-toggle');
   const themeIcon = document.getElementById('theme-icon');
   const root = document.documentElement;
 
+  // Retrieve saved preference or default to dark
   const savedTheme = localStorage.getItem('ashish-portfolio-theme') || 'dark';
-  applyTheme(savedTheme);
+  setTheme(savedTheme);
 
-  if (themeToggleBtn) {
-    themeToggleBtn.addEventListener('click', () => {
-      const currentTheme = root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', () => {
+      const currentTheme = root.getAttribute('data-theme') || 'dark';
       const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      applyTheme(newTheme);
-      localStorage.setItem('ashish-portfolio-theme', newTheme);
+      setTheme(newTheme);
     });
   }
 
-  function applyTheme(theme) {
+  function setTheme(theme) {
     root.setAttribute('data-theme', theme);
+    localStorage.setItem('ashish-portfolio-theme', theme);
     if (themeIcon) {
-      themeIcon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-    }
-  }
-
-  /* --------------------------------------------------------------------------
-     02. MOBILE NAVIGATION MENU
-     -------------------------------------------------------------------------- */
-  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-  const mobileNav = document.getElementById('mobile-nav');
-
-  if (mobileMenuBtn && mobileNav) {
-    mobileMenuBtn.addEventListener('click', () => {
-      mobileNav.classList.toggle('open');
-      const icon = mobileMenuBtn.querySelector('i');
-      if (icon) {
-        icon.className = mobileNav.classList.contains('open') ? 'fas fa-times' : 'fas fa-bars';
-      }
-    });
-
-    mobileNav.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileNav.classList.remove('open');
-        const icon = mobileMenuBtn.querySelector('i');
-        if (icon) icon.className = 'fas fa-bars';
-      });
-    });
-  }
-
-  /* --------------------------------------------------------------------------
-     03. SCROLL NAVIGATION & BACK-TO-TOP BUTTON
-     -------------------------------------------------------------------------- */
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-links a');
-  const backToTopBtn = document.getElementById('back-to-top');
-
-  window.addEventListener('scroll', () => {
-    let currentSectionId = '';
-    const scrollY = window.pageYOffset;
-
-    sections.forEach(section => {
-      const sectionHeight = section.offsetHeight;
-      const sectionTop = section.offsetTop - 120;
-      if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-        currentSectionId = section.getAttribute('id');
-      }
-    });
-
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === `#${currentSectionId}`) {
-        link.classList.add('active');
-      }
-    });
-
-    if (backToTopBtn) {
-      if (scrollY > 400) {
-        backToTopBtn.style.opacity = '1';
-        backToTopBtn.style.pointerEvents = 'auto';
+      if (theme === 'light') {
+        themeIcon.className = 'fas fa-sun';
       } else {
-        backToTopBtn.style.opacity = '0';
-        backToTopBtn.style.pointerEvents = 'none';
+        themeIcon.className = 'fas fa-moon';
       }
     }
-  });
+  }
+}
 
-  if (backToTopBtn) {
-    backToTopBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+/* ==========================================================================
+   3. EMAIL COPY WITH TOAST NOTIFICATION
+   ========================================================================== */
+function initEmailCopy() {
+  const copyBtns = [
+    document.getElementById('copy-email-hero'),
+    document.getElementById('copy-email-contact')
+  ].filter(Boolean);
+
+  const toast = document.getElementById('toast-notice');
+  const toastText = document.getElementById('toast-text');
+  let toastTimer = null;
+
+  function showToast(message) {
+    if (!toast) return;
+    if (toastText) toastText.textContent = message;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
+      toast.classList.remove('show');
+    }, 2500);
   }
 
-  /* --------------------------------------------------------------------------
-     04. ENHANCED INTERACTIVE AI AGENT CONSOLE (TERMINAL CLI ENGINE)
-     -------------------------------------------------------------------------- */
-  const termScreen = document.getElementById('terminal-screen');
-  const termHistory = document.getElementById('terminal-history');
-  const termInput = document.getElementById('terminal-user-input');
-  const termSendBtn = document.getElementById('terminal-send-btn');
-  const termCmdBtns = document.querySelectorAll('.term-cmd-btn');
-  const termCatTabs = document.querySelectorAll('.term-cat-tab');
-  const termStatusTag = document.getElementById('telemetry-status');
-  const termClusterTitle = document.getElementById('terminal-cluster-title');
-  const telemetryModel = document.getElementById('telemetry-model');
-  const telemetryLatency = document.getElementById('telemetry-latency');
-  const telemetryToks = document.getElementById('telemetry-toks');
-  const telemetryTokenCount = document.getElementById('telemetry-token-count');
+  copyBtns.forEach(btn => {
+    btn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      const email = btn.getAttribute('data-email') || 'ramashishmaurya738@gmail.com';
 
-  // Toolbar Buttons
-  const termCopyBtn = document.getElementById('term-copy-btn');
-  const termCotBtn = document.getElementById('term-cot-btn');
-  const termClearBtn = document.getElementById('term-clear-btn');
-  const termExportBtn = document.getElementById('term-export-btn');
-  const cotTracePanel = document.getElementById('cot-trace-panel');
-  const modelPills = document.querySelectorAll('.model-pill');
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          await navigator.clipboard.writeText(email);
+        } else {
+          // Fallback for older browsers
+          const textArea = document.createElement('textarea');
+          textArea.value = email;
+          document.body.appendChild(textArea);
+          textArea.select();
+          document.execCommand('copy');
+          document.body.removeChild(textArea);
+        }
+        showToast('Email copied to clipboard: ' + email);
+      } catch (err) {
+        // Fallback: open mail client
+        window.location.href = 'mailto:' + email;
+      }
+    });
+  });
+}
 
-  // Model Engine Profiles
-  const modelProfiles = {
-    llama: {
-      name: 'groq/llama-3.3-70b',
-      title: 'ashish-ai-agent-v2.6 :: groq-llama-3.3-70b',
-      latency: '28ms',
-      speed: '138 tok/s',
-      note: '[ENGINE SWITCH] Activated Groq Llama-3.3-70B: High throughput, sub-30ms TTFT, optimized for real-time agent tool routing.'
-    },
-    deepseek: {
-      name: 'deepseek-r1-distill',
-      title: 'ashish-ai-agent-v2.6 :: deepseek-r1-reasoner',
-      latency: '64ms',
-      speed: '82 tok/s',
-      note: '[ENGINE SWITCH] Activated DeepSeek-R1: Long-context Chain-of-Thought (CoT) activated. Mathematical validation and deep multi-hop inference enabled.'
-    },
-    claude: {
-      name: 'claude-3.5-sonnet',
-      title: 'ashish-ai-agent-v2.6 :: claude-3.5-architect',
-      latency: '48ms',
-      speed: '95 tok/s',
-      note: '[ENGINE SWITCH] Activated Claude-3.5-Sonnet: Production system architecture, strict contract adherence, and clean software craftsmanship mode.'
-    },
-    qdrant: {
-      name: 'qdrant-hybrid-hnsw',
-      title: 'ashish-ai-agent-v2.6 :: qdrant-vector-engine',
-      latency: '18ms',
-      speed: '210 tok/s',
-      note: '[ENGINE SWITCH] Activated Qdrant Hybrid Retriever: Dense cosine vector search + Sparse BM25 with metadata payload filtering.'
-    }
-  };
+/* ==========================================================================
+   4. INTERACTIVE TERMINAL CLI ENGINE
+   ========================================================================== */
+function initTerminal() {
+  const output = document.getElementById('terminal-output');
+  const form = document.getElementById('terminal-form');
+  const input = document.getElementById('terminal-input');
+  const chips = document.querySelectorAll('.terminal-chip');
 
-  // Centralized knowledge base loaded from portfolio-data.js (Single Source of Truth)
-  const knowledgeBase = (typeof PORTFOLIO_DATA !== 'undefined' && PORTFOLIO_DATA.terminalKnowledgeBase)
-    ? PORTFOLIO_DATA.terminalKnowledgeBase
-    : {
-        help: `[ASHISH AI TERMINAL v2.6 :: SHELL COMMANDS]\nType: help, whoami, stack, projects, prs, rag, benchmarks, contact, resume, clear`,
-        whoami: `[ASHISH MAURYA]\nAI & Data Science Engineer specializing in Multi-Agent Systems & RAG.`,
-        stack: `Python 3.12, LangGraph, FastAPI, Qdrant, Docker, PostgreSQL, MLflow.`,
-        contact: `ramashishmaurya738@gmail.com | +91 9769295699 | github.com/ramashishmaurya`,
-        resume: `[RESUME ACCESS GRANTED] Download started for Ashish_Maurya_Resume.pdf`
-      };
+  if (!output || !form || !input) return;
 
-
-  // State Management for CLI
-  let isStreaming = false;
-  const commandHistory = [];
+  const history = [];
   let historyIndex = -1;
 
-  function escapeHtml(text) {
-    const div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
-  }
+  const kb = (window.PORTFOLIO_DATA && window.PORTFOLIO_DATA.terminalKnowledgeBase) || {
+    help: `[ASHISH AI TERMINAL :: COMMANDS]
+  whoami      About Ashish, engineering background & focus
+  stack       Production engineering tech stack & vector DBs
+  prs         Merged open-source framework PRs (SynapseKit, LangGraph)
+  projects    Key production systems (IntelliDoc RAG, Banking ML, MLflow)
+  rag         Simulate end-to-end RAG semantic retrieval pipeline
+  benchmarks  Latency, throughput & precision metrics
+  contact     Direct contact protocol: Email, Phone, LinkedIn, GitHub
+  resume      Download Ashish Maurya's official resume PDF
+  clear       Clear terminal buffer`,
 
-  // Focus terminal input when clicking anywhere inside the terminal screen
-  if (termScreen && termInput) {
-    termScreen.addEventListener('click', (e) => {
-      if (window.getSelection().toString().length > 0) return;
-      if (e.target.closest('button') || e.target.closest('a')) return;
-      termInput.focus();
-    });
-  }
+    whoami: `[ASHISH MAURYA :: CANDIDATE PROFILE]
+• Role: AI & Data Science Engineer
+• Core Focus: Production Multi-Agent Systems (LangGraph), Enterprise RAG, and High-Performance FastAPI WebSockets.
+• Open Source: Core contributor to SynapseKit (PR #1056 AWS Lambda orchestration, PR #1057 Podman rootless sandbox).
+• Philosophy: Deterministic execution, zero hallucination tolerance, sub-30ms TTFT, and maintainable software craftsmanship.
+• Location: Mumbai, Maharashtra, India. Open for worldwide remote & on-site high-impact roles.`,
 
-  // Token-by-token streaming typewriter into a specific entry pre element
-  function streamToEntry(preElement, text, onComplete) {
-    if (!preElement) return;
-    isStreaming = true;
-    preElement.textContent = '';
+    stack: `[PRODUCTION ENGINEERING ARSENAL]
+• Languages: Python 3.12 (Advanced), SQL (PostgreSQL, MySQL), JavaScript, Bash
+• AI & Multi-Agent: LangGraph (Stateful Graphs), LangChain, Groq API, OpenAI SDK
+• Vector & Retrieval: Qdrant Hybrid Search, ChromaDB, BM25, Cross-Encoder Re-ranking
+• Backend: FastAPI (Async WebSockets), Django, Celery Distributed Queues, Redis
+• MLOps & Infra: Docker, Podman Rootless, MLflow, AWS Lambda, Linux Seccomp, Git CI/CD`,
 
-    if (termStatusTag) {
-      termStatusTag.textContent = '● Generating...';
-      termStatusTag.style.color = '#38bdf8';
-    }
+    prs: `[OPEN-SOURCE ECOSYSTEM HUBS & MERGED CONTRIBUTIONS]
+1. SynapseKit (Core Contributor · 3 Merged PRs · +1,186 lines)
+   • PR #1056: AWS Lambda Tool Orchestration for Autonomous Agents
+   • PR #1057: Podman Rootless Sandbox Runtime for Untrusted Code
+   • PR #1061: GitLab Webhook & CI/CD Pipeline Agent
+2. LangGraph Ecosystem (Graph Contributor · 2 Merged PRs · +420 lines)
+   • PR #842: Async state graph checkpointing fallback
+   • PR #915: Custom tool routing error boundaries
+3. DynaVec (Creator & Maintainer · +750 lines)
+   • Async vector embedding engine with Bedrock connectors`,
 
-    let index = 0;
-    const speed = 6;
-    const stepSize = text.length > 350 ? 3 : 1;
+    projects: `[FEATURED PRODUCTION SYSTEMS]
+1. IntelliDoc RAG Enterprise Assistant
+   • FastAPI, PyMuPDF, Qdrant Vector DB, WebSockets streaming (138 tok/s).
+2. Financial Multi-Agent Research Engine
+   • LangGraph multi-agent team with Podman rootless sandbox & Groq LLMs.
+3. Banking Customer Segmentation & Churn Engine
+   • Unsupervised RFM clustering & XGBoost deployed live on Render.
+4. Salary Prediction & MLflow Pipeline
+   • End-to-end MLOps containerized regression pipeline with experiment tracking.`,
 
-    function typeStep() {
-      if (index < text.length) {
-        const nextSlice = text.slice(index, index + stepSize);
-        preElement.textContent += nextSlice;
-        index += stepSize;
+    rag: `[INTELLIDOC RAG PIPELINE SIMULATION]
+1. Ingestion: PyMuPDF parses 250-page technical PDF into semantic chunks (500 tokens).
+2. Embeddings: Vectorized with text-embedding-3-small into 1536-dim vectors.
+3. Qdrant Upsert: Indexed into Qdrant collection with payload metadata & HNSW graph.
+4. Hybrid Retrieval: Dense cosine similarity (> 0.88) + BM25 keyword matching returns top-8 candidates.
+5. Re-Ranking: Cross-Encoder filters top-3 highest scoring excerpts.
+6. Generation: FastAPI WebSockets stream tokens at 138 tok/s with exact citations.
+Status: Verification Passed · Hallucination Rate = 0.00%.`,
 
-        if (telemetryTokenCount) {
-          telemetryTokenCount.textContent = Math.round(index / 3.8);
-        }
+    benchmarks: `[PERFORMANCE METRICS MATRIX]
+• LLM Time-to-First-Token (TTFT): 28ms (Groq Llama-3.3-70B via FastAPI)
+• Vector Semantic Retrieval: 38ms average across 50k document vectors in Qdrant
+• Container Sandbox Spin-Up: 160ms (Podman rootless microVM vs 420ms standard Docker)
+• Citation Grounding Rate: 99.8% precision with Cross-Encoder verification.`,
 
-        if (termScreen) {
-          termScreen.scrollTop = termScreen.scrollHeight;
-        }
+    contact: `[ASHISH MAURYA :: CONTACT PROTOCOL]
+• Email: ramashishmaurya738@gmail.com
+• Phone / WhatsApp: +91 9769295699
+• Location: Mumbai, Maharashtra, India
+• GitHub: https://github.com/ramashishmaurya
+• LinkedIn: https://www.linkedin.com/in/ashishmaurya09/
+• Twitter: https://x.com/ashishmaurya02`,
 
-        setTimeout(typeStep, speed);
-      } else {
-        preElement.textContent = text;
-        isStreaming = false;
-        if (termStatusTag) {
-          termStatusTag.textContent = '● Active (Ready)';
-          termStatusTag.style.color = '#34d399';
-        }
-        if (termScreen) {
-          termScreen.scrollTop = termScreen.scrollHeight;
-        }
-        if (termInput) {
-          termInput.focus();
-        }
-        if (onComplete) onComplete();
-      }
-    }
+    resume: `[RESUME ACCESS GRANTED]
+• File: Ashish_Maurya_Resume.pdf
+• Candidate: Ashish Maurya | AI & Data Science Engineer
+Opening official resume...`
+  };
 
-    typeStep();
-  }
+  function executeCommand(rawCmd) {
+    const cmd = rawCmd.trim();
+    if (!cmd) return;
 
-  // General stream fallback for lab simulation
-  function streamOutput(text, onComplete) {
-    const preOutput = document.getElementById('terminal-output');
-    if (preOutput) {
-      streamToEntry(preOutput, text, onComplete);
-    } else {
-      executeCommand(text);
-    }
-  }
+    history.push(cmd);
+    historyIndex = history.length;
 
-  // Query / Command Router
-  function getResponseForQuery(inputStr) {
-    const q = inputStr.trim().toLowerCase();
+    // Echo input
+    output.textContent += `\n\nvisitor@ashish:~$ ${cmd}\n`;
 
-    // Direct CLI commands
-    if (q === 'help' || q === '?' || q === '--help' || q === 'commands') {
-      return knowledgeBase.help;
-    }
-    if (q === 'whoami' || q === 'bio' || q === 'ashish') {
-      return knowledgeBase.whoami;
-    }
-    if (q === 'stack' || q === 'skills' || q === 'technologies' || q === 'tech') {
-      return knowledgeBase.stack;
-    }
-    if (q === 'projects' || q === 'work' || q === 'portfolio') {
-      return knowledgeBase.projects;
-    }
-    if (q === 'pr' || q === 'prs' || q === 'opensource' || q === 'synapsekit') {
-      return knowledgeBase.prs;
-    }
-    if (q === 'rag' || q === 'intellidoc') {
-      return knowledgeBase.rag_demo;
-    }
-    if (q === 'benchmarks' || q === 'speed' || q === 'latency') {
-      return knowledgeBase.benchmarks;
-    }
-    if (q === 'contact' || q === 'email' || q === 'phone' || q === 'reach') {
-      return knowledgeBase.contact;
-    }
-    if (q === 'resume' || q === 'cv') {
-      return knowledgeBase.resume;
-    }
+    const lower = cmd.toLowerCase();
 
-    // Natural Language Queries
-    if (q.includes('hire') || q.includes('why') || q.includes('who are you') || q.includes('about')) {
-      return knowledgeBase.why_hire;
-    }
-    if (q.includes('stack') || q.includes('tool') || q.includes('language') || q.includes('framework')) {
-      return knowledgeBase.stack;
-    }
-    if (q.includes('synapse') || q.includes('aws') || q.includes('lambda')) {
-      return knowledgeBase.synapse_aws;
-    }
-    if (q.includes('podman') || q.includes('sandbox') || q.includes('container') || q.includes('security') || q.includes('docker')) {
-      return knowledgeBase.podman_sandbox;
-    }
-    if (q.includes('rag') || q.includes('pdf') || q.includes('retriev') || q.includes('qdrant') || q.includes('document')) {
-      return knowledgeBase.rag_demo;
-    }
-    if (q.includes('bank') || q.includes('segment') || q.includes('churn') || q.includes('rfm')) {
-      return knowledgeBase.banking_ml;
-    }
-    if (q.includes('bench') || q.includes('speed') || q.includes('tok') || q.includes('latency')) {
-      return knowledgeBase.benchmarks;
-    }
-    if (q.includes('contact') || q.includes('email') || q.includes('phone') || q.includes('whatsapp') || q.includes('linkedin')) {
-      return knowledgeBase.contact;
-    }
-    if (q.includes('resume') || q.includes('cv') || q.includes('download')) {
-      return knowledgeBase.resume;
-    }
-    if (q.includes('agent') || q.includes('langgraph') || q.includes('multi-agent') || q.includes('supervisor')) {
-      return knowledgeBase.architecture;
-    }
-
-    // Dynamic Generic Inference
-    return `[QUERY PROCESSED] "${inputStr}"
-[AGENT REASONING]
-Intent classified: Technical inquiry regarding Ashish Maurya's engineering background.
-• Specialized Profile: Production AI & Data Science Engineer (Mumbai, India).
-• Core Competencies: LangGraph Multi-Agent Systems, High-Performance RAG (Qdrant), FastAPI WebSockets, Daemonless Podman Sandboxes, and Predictive ML.
-• Open-Source Cred: Merged PR #1056 (AWS Lambda Tool) & PR #1057 (Podman Sandbox) into SynapseKit.
-• Direct Inquiries: ramashishmaurya738@gmail.com | +91 9769295699 | https://github.com/ramashishmaurya
-Tip: Try typing 'help', 'whoami', 'stack', 'rag', 'projects', or 'contact'.`;
-  }
-
-  // Execute Command entered by user or triggered by chip
-  function executeCommand(rawInput) {
-    if (!termHistory) return;
-    const inputStr = (rawInput || '').trim();
-    if (!inputStr) return;
-
-    // Save to command history
-    commandHistory.push(inputStr);
-    historyIndex = -1;
-
-    // Clear input
-    if (termInput) {
-      termInput.value = '';
-    }
-
-    const lower = inputStr.toLowerCase();
-
-    // Clear Screen command
     if (lower === 'clear' || lower === 'cls') {
-      termHistory.innerHTML = '';
-      if (telemetryTokenCount) telemetryTokenCount.textContent = '0';
-      if (termInput) termInput.focus();
+      output.textContent = `[ASHISH AI TERMINAL v2.6 :: READY]\nType 'help' or click any command chip above to inspect details.`;
+      output.scrollTop = output.scrollHeight;
       return;
     }
 
-    // Create a new Terminal Entry in history
-    const entry = document.createElement('div');
-    entry.className = 'terminal-entry';
-    entry.innerHTML = `
-      <div class="entry-user-prompt">
-        <span class="terminal-prompt-sym" style="color: #22d3ee; font-weight: 700;">visitor@ashish-ai:~$</span>
-        <span class="terminal-cmd-text" style="color: #f8fafc; font-weight: 600;">${escapeHtml(inputStr)}</span>
-      </div>
-      <pre class="terminal-output"></pre>
-    `;
-    termHistory.appendChild(entry);
-
-    if (termScreen) {
-      termScreen.scrollTop = termScreen.scrollHeight;
+    if (lower === 'resume') {
+      window.open('Ashish_Maurya_Resume.pdf', '_blank');
+      output.textContent += kb.resume;
+      output.scrollTop = output.scrollHeight;
+      return;
     }
 
-    const preEl = entry.querySelector('.terminal-output');
-    const responseText = getResponseForQuery(inputStr);
-
-    // Trigger download if resume command
-    if (lower === 'resume' || lower === 'cv' || lower.includes('download resume')) {
-      setTimeout(() => {
-        const resumeFile = (typeof PORTFOLIO_DATA !== 'undefined' && PORTFOLIO_DATA.personal && PORTFOLIO_DATA.personal.resumePdf)
-          ? PORTFOLIO_DATA.personal.resumePdf
-          : 'Ashish_Maurya_Resume.pdf';
-        const link = document.createElement('a');
-        link.href = resumeFile;
-        link.download = resumeFile;
-        link.click();
-      }, 1000);
+    // Direct command match
+    if (kb[lower]) {
+      output.textContent += kb[lower];
+      output.scrollTop = output.scrollHeight;
+      return;
     }
 
-    // Stream response
-    streamToEntry(preEl, responseText);
-  }
-
-  // Input Event Listeners for Terminal CLI
-  if (termSendBtn) {
-    termSendBtn.addEventListener('click', () => {
-      if (termInput) executeCommand(termInput.value);
-    });
-  }
-
-  if (termInput) {
-    termInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        e.preventDefault();
-        executeCommand(termInput.value);
-      } else if (e.key === 'ArrowUp') {
-        e.preventDefault();
-        if (commandHistory.length > 0) {
-          if (historyIndex === -1) {
-            historyIndex = commandHistory.length - 1;
-          } else if (historyIndex > 0) {
-            historyIndex--;
-          }
-          termInput.value = commandHistory[historyIndex];
-        }
-      } else if (e.key === 'ArrowDown') {
-        e.preventDefault();
-        if (commandHistory.length > 0 && historyIndex !== -1) {
-          if (historyIndex < commandHistory.length - 1) {
-            historyIndex++;
-            termInput.value = commandHistory[historyIndex];
-          } else {
-            historyIndex = -1;
-            termInput.value = '';
-          }
-        }
-      } else if (e.key === 'Escape') {
-        termInput.value = '';
-      }
-    });
-  }
-
-  // Quick Prompt Chips Event Handlers
-  termCmdBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const cmd = btn.getAttribute('data-cmd');
-      const label = btn.textContent.trim();
-      executeCommand(cmd || label);
-    });
-  });
-
-  // Category Filter Tabs for Quick Prompts
-  termCatTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      termCatTabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-
-      const cat = tab.getAttribute('data-cat');
-      termCmdBtns.forEach(btn => {
-        const btnCat = btn.getAttribute('data-cat');
-        if (cat === 'all' || btnCat === cat) {
-          btn.style.display = 'inline-flex';
-        } else {
-          btn.style.display = 'none';
-        }
-      });
-    });
-  });
-
-  // Model Switcher Event Handlers
-  modelPills.forEach(pill => {
-    pill.addEventListener('click', () => {
-      modelPills.forEach(p => p.classList.remove('active'));
-      pill.classList.add('active');
-
-      const modelKey = pill.getAttribute('data-model');
-      const profile = modelProfiles[modelKey] || modelProfiles.llama;
-
-      if (termClusterTitle) termClusterTitle.textContent = profile.title;
-      if (telemetryModel) telemetryModel.textContent = `model: ${profile.name}`;
-      if (telemetryLatency) telemetryLatency.textContent = `latency: ${profile.latency}`;
-      if (telemetryToks) telemetryToks.textContent = `speed: ${profile.speed}`;
-
-      // If DeepSeek selected, automatically open CoT trace
-      if (modelKey === 'deepseek' && cotTracePanel) {
-        cotTracePanel.style.display = 'block';
-      }
-
-      executeCommand(`switch-engine --model ${profile.name}`);
-    });
-  });
-
-  // Toolbar Actions: Copy, CoT Toggle, Clear, Export JSON
-  if (termCopyBtn) {
-    termCopyBtn.addEventListener('click', () => {
-      if (!termHistory) return;
-      const allText = termHistory.innerText;
-      navigator.clipboard.writeText(allText).then(() => {
-        const btnText = document.getElementById('copy-btn-text');
-        if (btnText) {
-          btnText.textContent = 'Copied!';
-          setTimeout(() => { btnText.textContent = 'Copy'; }, 2000);
-        }
-      });
-    });
-  }
-
-  if (termCotBtn) {
-    termCotBtn.addEventListener('click', () => {
-      if (!cotTracePanel) return;
-      cotTracePanel.style.display = cotTracePanel.style.display === 'none' ? 'block' : 'none';
-    });
-  }
-
-  if (termClearBtn) {
-    termClearBtn.addEventListener('click', () => {
-      if (termHistory) {
-        termHistory.innerHTML = `
-          <div class="terminal-entry">
-            <pre class="terminal-output">[SYSTEM READY] Screen buffer cleared. Type any command (e.g. 'help', 'whoami', 'stack', 'rag', 'projects', 'contact') or ask any question!</pre>
-          </div>
-        `;
-      }
-      if (telemetryTokenCount) telemetryTokenCount.textContent = '0';
-      if (termInput) termInput.focus();
-    });
-  }
-
-  if (termExportBtn) {
-    termExportBtn.addEventListener('click', () => {
-      const payload = {
-        author: 'Ashish Maurya',
-        role: 'AI & Data Science Engineer',
-        cluster: 'ashish-ai-agent-v2.6',
-        timestamp: new Date().toISOString(),
-        history: termHistory ? termHistory.innerText : ''
-      };
-      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `ashish_agent_session_${Date.now()}.json`;
-      a.click();
-      URL.revokeObjectURL(url);
-    });
-  }
-
-  /* --------------------------------------------------------------------------
-     05. OPEN SOURCE & MERGED CONTRIBUTIONS HUB (PROJECT HUBS & TOP TOPICS)
-     Scalable to 100+ PRs: Grouped by Project/Repo with Top Topics Matrix
-     -------------------------------------------------------------------------- */
-  const openSourceHub = (typeof PORTFOLIO_DATA !== 'undefined' && PORTFOLIO_DATA.openSourceHub)
-    ? PORTFOLIO_DATA.openSourceHub
-    : null;
-
-  let openSourcePRs = (typeof PORTFOLIO_DATA !== 'undefined' && Array.isArray(PORTFOLIO_DATA.openSourcePRs))
-    ? [...PORTFOLIO_DATA.openSourcePRs]
-    : [];
-
-  const osProjectsContainer = document.getElementById('os-projects-container');
-  const osPrsContainer = document.getElementById('os-pr-cards-container');
-  const toggleViewProjectsBtn = document.getElementById('toggle-view-projects');
-  const toggleViewPrsBtn = document.getElementById('toggle-view-prs');
-  const osTopicPills = document.querySelectorAll('.os-topic-pill');
-  const osPrCountEl = document.getElementById('os-pr-count');
-  const osLinesCountEl = document.getElementById('os-lines-count');
-  const osReposCountEl = document.getElementById('os-repos-count');
-  const osToggleProjectsCountEl = document.getElementById('os-toggle-projects-count');
-  const osTogglePrsCountEl = document.getElementById('os-toggle-prs-count');
-
-  // View Mode Switcher: "By Project" vs "Recent PR Highlights"
-  if (toggleViewProjectsBtn && toggleViewPrsBtn) {
-    toggleViewProjectsBtn.addEventListener('click', () => {
-      toggleViewProjectsBtn.classList.add('active');
-      toggleViewPrsBtn.classList.remove('active');
-      if (osProjectsContainer) osProjectsContainer.style.display = 'grid';
-      if (osPrsContainer) osPrsContainer.style.display = 'none';
-    });
-
-    toggleViewPrsBtn.addEventListener('click', () => {
-      toggleViewPrsBtn.classList.add('active');
-      toggleViewProjectsBtn.classList.remove('active');
-      if (osProjectsContainer) osProjectsContainer.style.display = 'none';
-      if (osPrsContainer) osPrsContainer.style.display = 'grid';
-    });
-  }
-
-  // Top Topics Filter: Filters Project Cards and PR Cards by topic
-  osTopicPills.forEach(pill => {
-    pill.addEventListener('click', () => {
-      osTopicPills.forEach(p => p.classList.remove('active'));
-      pill.classList.add('active');
-
-      const topic = pill.getAttribute('data-topic');
-
-      // Filter Project Cards
-      const projectCards = document.querySelectorAll('.os-project-card');
-      projectCards.forEach(card => {
-        const cardTopics = (card.getAttribute('data-topics') || '').toLowerCase();
-        const cardCategory = (card.getAttribute('data-category') || '').toLowerCase();
-        if (topic === 'all' || cardTopics.includes(topic) || cardCategory === topic) {
-          card.style.display = 'flex';
-          setTimeout(() => { card.style.opacity = '1'; card.style.transform = 'translateY(0)'; }, 30);
-        } else {
-          card.style.opacity = '0';
-          card.style.transform = 'translateY(8px)';
-          setTimeout(() => { card.style.display = 'none'; }, 150);
-        }
-      });
-
-      // Filter PR Cards
-      const prCards = document.querySelectorAll('.pr-full-card');
-      prCards.forEach(card => {
-        const prTopics = (card.getAttribute('data-topics') || '').toLowerCase();
-        const prCat = (card.getAttribute('data-category') || '').toLowerCase();
-        if (topic === 'all' || prTopics.includes(topic) || prCat === topic) {
-          card.style.display = 'flex';
-          setTimeout(() => { card.style.opacity = '1'; card.style.transform = 'translateY(0)'; }, 30);
-        } else {
-          card.style.opacity = '0';
-          card.style.transform = 'translateY(8px)';
-          setTimeout(() => { card.style.display = 'none'; }, 150);
-        }
-      });
-    });
-  });
-
-  // Background GitHub Sync: Aggregates live merged PRs by repository
-  async function syncGitHubPRs() {
-    try {
-      const res = await fetch('https://api.github.com/search/issues?q=author:ramashishmaurya+type:pr+is:merged', {
-        headers: { 'Accept': 'application/vnd.github.v3+json' }
-      });
-      if (!res.ok) return;
-      const data = await res.json();
-      if (data.items && data.items.length > 0) {
-        // Update live metrics
-        const totalMerged = data.total_count || data.items.length;
-        if (osPrCountEl) osPrCountEl.textContent = `${totalMerged}+`;
-
-        // Group by repository
-        const repoMap = new Map();
-        data.items.forEach(item => {
-          const repoSlug = item.repository_url
-            ? item.repository_url.replace('https://api.github.com/repos/', '')
-            : 'Other / Open Source';
-          repoMap.set(repoSlug, (repoMap.get(repoSlug) || 0) + 1);
-        });
-
-        const repoCount = repoMap.size;
-        if (osReposCountEl && repoCount > 0) {
-          osReposCountEl.textContent = `${repoCount} Repositories`;
-        }
-        if (osToggleProjectsCountEl && repoCount > 0) {
-          osToggleProjectsCountEl.textContent = repoCount;
-        }
-      }
-    } catch (e) {
-      // Graceful fallback to portfolio-data.js
+    // Natural query / keyword fuzzy matching
+    if (lower.includes('hire') || lower.includes('why')) {
+      output.textContent += `[WHY HIRE ASHISH MAURYA]
+1. Production Experience: Not just tutorials—actively merged PRs to open-source frameworks (SynapseKit, LangGraph).
+2. Full Lifecycle: Builds vector search, multi-agent teams, and Dockerized FastAPI backends.
+3. Quantifiable Impact: Live banking segmentation on Render, containerized MLflow salary pipelines, sub-30ms TTFT RAG systems.
+4. Clean Craftsmanship: Obsessed with deterministic execution, zero hallucinations, and maintainable software.`;
+    } else if (lower.includes('synapse') || lower.includes('lambda') || lower.includes('podman')) {
+      output.textContent += kb.prs;
+    } else if (lower.includes('vector') || lower.includes('qdrant') || lower.includes('chroma')) {
+      output.textContent += `[VECTOR & RETRIEVAL ARSENAL]
+• Primary: Qdrant Hybrid Search (Cosine Sim > 0.88 with dense + BM25 keyword matching)
+• Secondary: ChromaDB, HNSW graph indexing, Cross-Encoder re-rankers
+• Result: 38ms average retrieval latency across 50k document chunks.`;
+    } else if (lower.includes('agent') || lower.includes('langgraph')) {
+      output.textContent += `[AGENTIC AI ARCHITECTURE]
+Ashish builds stateful multi-agent systems using LangGraph:
+• Router Node analyzes intent complexity
+• Parallel specialized agents (Search, Analyst, Risk, Editor)
+• Sandboxed execution via rootless Podman (SynapseKit PR #1057)
+• Deterministic state graph checkpointing with sub-35ms WebSocket streaming.`;
+    } else {
+      output.textContent += `Command not recognized: '${cmd}'.\nType 'help' for a list of valid commands or click any chip above.`;
     }
+
+    output.scrollTop = output.scrollHeight;
   }
 
-  // Initial Sync Trigger
-  syncGitHubPRs();
+  // Handle Form Submission
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const cmd = input.value;
+    input.value = '';
+    executeCommand(cmd);
+  });
 
-  /* --------------------------------------------------------------------------
-     06. SERVICES MASTER-DETAIL SELECTOR
-     -------------------------------------------------------------------------- */
-  // Load Services Data from centralized portfolio-data.js (Single Source of Truth)
-  const servicesData = (typeof PORTFOLIO_DATA !== 'undefined' && Array.isArray(PORTFOLIO_DATA.services))
-    ? PORTFOLIO_DATA.services
-    : [];
-
-
-  const serviceButtons = document.querySelectorAll('.service-item-btn');
-  const previewNum = document.getElementById('preview-num');
-  const previewIcon = document.getElementById('preview-icon');
-  const previewTitle = document.getElementById('preview-title');
-  const previewDesc = document.getElementById('preview-desc');
-  const previewFeatures = document.getElementById('preview-features');
-  const previewTags = document.getElementById('preview-tags');
-  const previewCard = document.getElementById('service-preview-card');
-
-  serviceButtons.forEach((btn, index) => {
-    btn.addEventListener('click', () => {
-      serviceButtons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      const data = servicesData[index];
-      if (data && previewTitle) {
-        if (previewCard) {
-          previewCard.style.opacity = '0.4';
-          previewCard.style.transform = 'translateY(6px)';
-        }
-
-        setTimeout(() => {
-          if (previewNum) previewNum.textContent = data.num;
-          if (previewIcon) previewIcon.className = data.icon;
-          if (previewTitle) previewTitle.textContent = data.title;
-          if (previewDesc) previewDesc.textContent = data.desc;
-
-          if (previewFeatures) {
-            previewFeatures.innerHTML = data.features
-              .map(f => `<li><i class="fas fa-check-circle"></i> <span>${f}</span></li>`)
-              .join('');
-          }
-
-          if (previewTags) {
-            previewTags.innerHTML = data.tags
-              .map(t => `<span>${t}</span>`)
-              .join('');
-          }
-
-          if (previewCard) {
-            previewCard.style.opacity = '1';
-            previewCard.style.transform = 'translateY(0)';
-          }
-        }, 120);
+  // Handle Command Chips
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      const cmd = chip.getAttribute('data-cmd');
+      if (cmd) {
+        input.value = '';
+        executeCommand(cmd);
       }
     });
   });
 
-  /* --------------------------------------------------------------------------
-     07. PROJECTS FILTERING
-     -------------------------------------------------------------------------- */
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const projectCards = document.querySelectorAll('.project-card');
-
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      const filter = btn.getAttribute('data-filter');
-
-      projectCards.forEach(card => {
-        const category = card.getAttribute('data-category') || '';
-        if (filter === 'all' || category.includes(filter)) {
-          card.style.display = 'flex';
-          setTimeout(() => {
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-          }, 40);
-        } else {
-          card.style.opacity = '0';
-          card.style.transform = 'translateY(10px)';
-          setTimeout(() => {
-            card.style.display = 'none';
-          }, 180);
-        }
-      });
-    });
-  });
-
-  /* --------------------------------------------------------------------------
-     08. CONTACT FORM SUBMISSION
-     -------------------------------------------------------------------------- */
-  const contactForm = document.getElementById('contact-form');
-  if (contactForm) {
-    contactForm.addEventListener('submit', () => {
-      const submitBtn = contactForm.querySelector('button[type="submit"]');
-      if (submitBtn) {
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending message...';
+  // History Navigation & Tab Completion
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      if (history.length > 0 && historyIndex > 0) {
+        historyIndex--;
+        input.value = history[historyIndex];
       }
-    });
-  }
-
-});
+    } else if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      if (historyIndex < history.length - 1) {
+        historyIndex++;
+        input.value = history[historyIndex];
+      } else {
+        historyIndex = history.length;
+        input.value = '';
+      }
+    } else if (e.key === 'Tab') {
+      e.preventDefault();
+      const current = input.value.trim().toLowerCase();
+      const commands = Object.keys(kb).concat(['clear', 'cls']);
+      const match = commands.find(c => c.startsWith(current));
+      if (match) {
+        input.value = match;
+      }
+    }
+  });
+}

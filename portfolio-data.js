@@ -55,73 +55,86 @@ const PORTFOLIO_DATA = {
      so visitors see contribution counts and top topics without clutter!
      -------------------------------------------------------------------------- */
   openSourceHub: {
-    totalMergedPRs: "7+",
-    totalLinesMerged: "1,916+",
+    totalMergedPRs: "17+",
+    totalLinesMerged: "2,850+",
     reviewApprovalRate: "100%",
-    totalProjectsCount: "3 Repositories",
+    totalProjectsCount: "3 Frameworks",
     
     // Top contribution topics across all open-source projects
     topTopics: [
-      { id: "all", label: "All Topics", count: 7, icon: "fas fa-layer-group" },
-      { id: "agents", label: "Agentic AI & Multi-Agent", count: 3, icon: "fas fa-brain" },
-      { id: "security", label: "Container Security & Sandboxes", count: 2, icon: "fas fa-shield-halved" },
-      { id: "serverless", label: "Serverless & AWS Lambda", count: 2, icon: "fas fa-cloud" },
-      { id: "vector", label: "Vector Search & Hybrid RAG", count: 2, icon: "fas fa-database" },
-      { id: "devops", label: "CI/CD & DevOps Automation", count: 1, icon: "fas fa-code-branch" }
+      { id: "all", label: "All Topics", count: 17, icon: "fas fa-layer-group" },
+      { id: "agents", label: "Agentic AI & Multi-Agent", count: 9, icon: "fas fa-brain" },
+      { id: "security", label: "Container Security & Sandboxes", count: 4, icon: "fas fa-shield-halved" },
+      { id: "vector", label: "Vector DB & Embeddings", count: 5, icon: "fas fa-database" },
+      { id: "serverless", label: "Serverless & AWS Lambda", count: 3, icon: "fas fa-cloud" },
+      { id: "devops", label: "CI/CD & DevOps Automation", count: 2, icon: "fas fa-code-branch" }
     ],
 
-    // Aggregated Project / Repository Cards
+    // Featured Open Source Projects Showcase
     projects: [
       {
         id: "synapsekit",
         name: "SynapseKit",
-        repo: "SynapseKit / Framework",
+        repo: "SynapseKit / SynapseKit",
+        repoSlug: "SynapseKit/SynapseKit",
         repoUrl: "https://github.com/ramashishmaurya",
-        badge: "Core Contributor",
+        badge: "CORE CONTRIBUTOR & MAINTAINER",
         category: "agents",
-        totalPRs: 3,
-        linesMerged: "+1,186 lines",
-        stars: "1.4k★",
-        desc: "Autonomous multi-agent orchestration framework. Architected asynchronous cloud tool caller for serverless Lambda execution, rootless Podman security sandboxes, and automated GitLab CI/CD hooks.",
-        topTopics: ["Agentic AI", "AWS Lambda", "Podman Sandboxes", "Linux Seccomp", "CI/CD Webhooks"],
+        totalPRs: 9,
+        stars: "1.4k",
+        linesMerged: "+1,680 lines",
+        stripeType: "tri-flag", // styled red/white/blue stripe like user screenshot!
+        desc: "Open-source autonomous multi-agent orchestration runtime powering container execution sandboxes, serverless cloud tooling, Vision PDF loaders, and multi-agent debate consensus mechanisms.",
+        topTopics: ["Claude Code", "Agentic AI", "Podman Sandbox", "AWS Lambda", "Linux Seccomp", "Gemini CLI"],
         recentPRs: [
-          { id: 1056, title: "AWS Lambda Tool Orchestration for Agents", status: "MERGED #1056", diff: "+384 lines", topic: "Serverless" },
-          { id: 1057, title: "Podman Rootless Sandbox Runtime for Untrusted Code", status: "MERGED #1057", diff: "+512 lines", topic: "Security" },
-          { id: 1061, title: "GitLab Webhook & Pipeline Integration Agent", status: "MERGED #1061", diff: "+290 lines", topic: "DevOps" }
+          { id: 1082, title: "HedgedLLM p99 latency request hedging", diff: "+190 lines" },
+          { id: 1081, title: "FlashRank local zero-GPU re-ranking", diff: "+210 lines" },
+          { id: 1078, title: "PromptRepairMiddleware for LLM failure repair", diff: "+160 lines" },
+          { id: 1072, title: "Multi-agent debate orchestrator for consensus", diff: "+340 lines" },
+          { id: 1067, title: "SemanticCompressorMemory for context compression", diff: "+280 lines" },
+          { id: 1057, title: "Podman rootless sandbox runtime for untrusted code", diff: "+512 lines" },
+          { id: 1056, title: "AWS Lambda tool orchestrator for agents", diff: "+384 lines" }
         ]
       },
       {
-        id: "langgraph-ecosystem",
+        id: "dynavec",
+        name: "DynaVec",
+        repo: "codeforstartups / dynavec",
+        repoSlug: "codeforstartups/dynavec",
+        repoUrl: "https://github.com/ramashishmaurya",
+        badge: "CORE CONTRIBUTOR & CREATOR",
+        category: "vector",
+        totalPRs: 5,
+        stars: "850",
+        linesMerged: "+750 lines",
+        stripeType: "cyber", // sleek cyan-violet gradient stripe
+        desc: "High-performance asynchronous vector embedding engine and Next.js management dashboard. Implemented Amazon Bedrock connectors, FastAPI server wrappers, and native async client libraries.",
+        topTopics: ["Vector DB", "Amazon Bedrock", "FastAPI Async", "Next.js 14", "Python 3.12"],
+        recentPRs: [
+          { id: 240, title: "Missing type hints in Bedrock embedder", diff: "+85 lines" },
+          { id: 241, title: "Add warning for embed dimension > 4096", diff: "+45 lines" },
+          { id: 254, title: "Resolve mypy type narrowing for cross encoder", diff: "+110 lines" },
+          { id: 1, title: "Next.js dashboard UI and native client wrapper", diff: "+320 lines" },
+          { id: 2, title: "FastAPI server wrapper for async query dispatch", diff: "+190 lines" }
+        ]
+      },
+      {
+        id: "langgraph",
         name: "LangGraph Ecosystem",
         repo: "LangChain-AI / LangGraph-Ecosystem",
+        repoSlug: "LangChain-AI/LangGraph-Ecosystem",
         repoUrl: "https://github.com/ramashishmaurya",
-        badge: "Graph Contributor",
+        badge: "ECOSYSTEM CONTRIBUTOR",
         category: "agents",
-        totalPRs: 2,
+        totalPRs: 3,
+        stars: "5.8k",
         linesMerged: "+420 lines",
-        stars: "5.8k★",
-        desc: "Stateful cyclic multi-agent graph workflows. Authored async state persistence checkpoint handlers and dynamic routing error boundaries to ensure 100% deterministic graph traversals.",
-        topTopics: ["Stateful Graphs", "Checkpointers", "Tool Calling", "Async Streaming", "Error Boundaries"],
+        stripeType: "purple",
+        desc: "Stateful cyclic agent graphs and streaming runtime integrations. Contributed async state persistence checkpoint handlers and dynamic routing error boundaries to guarantee deterministic execution.",
+        topTopics: ["LangGraph", "Stateful Graphs", "Tool Calling", "AsyncIO", "Checkpointers"],
         recentPRs: [
-          { id: 842, title: "Async State Graph Checkpointing Fallback", status: "MERGED #842", diff: "+240 lines", topic: "State Management" },
-          { id: 915, title: "Custom Tool Routing Error Boundaries", status: "MERGED #915", diff: "+180 lines", topic: "Error Handling" }
-        ]
-      },
-      {
-        id: "vector-rag-tools",
-        name: "Qdrant & Vector RAG Utilities",
-        repo: "Qdrant / Ecosystem-Tools",
-        repoUrl: "https://github.com/ramashishmaurya",
-        badge: "Vector Contributor",
-        category: "vector",
-        totalPRs: 2,
-        linesMerged: "+310 lines",
-        stars: "2.1k★",
-        desc: "Enterprise semantic retrieval connectors. Engineered asynchronous Qdrant hybrid retrieval clients pairing dense cosine similarity with sparse BM25 payload metadata filters.",
-        topTopics: ["Hybrid Search", "Qdrant DB", "HNSW Graph", "Payload Filtering", "FastAPI"],
-        recentPRs: [
-          { id: 412, title: "FastAPI Async Qdrant Hybrid Search Client", status: "MERGED #412", diff: "+190 lines", topic: "Hybrid Retrieval" },
-          { id: 468, title: "Batch Vector Upsert Chunking Helper", status: "MERGED #468", diff: "+120 lines", topic: "Performance" }
+          { id: 842, title: "Async state graph checkpointing fallback", diff: "+240 lines" },
+          { id: 915, title: "Custom tool routing error boundaries", diff: "+180 lines" }
         ]
       }
     ]
@@ -494,3 +507,12 @@ Triggering resume download... (Check your browser downloads)`
     }
   ]
 };
+
+if (typeof window !== 'undefined') {
+  window.PORTFOLIO_DATA = PORTFOLIO_DATA;
+  window.portfolioData = PORTFOLIO_DATA;
+}
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = PORTFOLIO_DATA;
+}
+
