@@ -180,8 +180,9 @@ function initTerminal() {
    • LangGraph multi-agent team with Podman rootless sandbox & Groq LLMs.
 3. Banking Customer Segmentation & Churn Engine
    • Unsupervised RFM clustering & XGBoost deployed live on Render.
-4. Salary Prediction & MLflow Pipeline
-   • End-to-end MLOps containerized regression pipeline with experiment tracking.`,
+4. SupplyChain Copilot AI (Enterprise ERP Intelligence)
+   • Deterministic supply chain risk engine with guarded LLM copilot and HITL PO workflow.
+   • Live: https://supply-chain-erp-command-center-fro-one.vercel.app/`,
 
     rag: `[INTELLIDOC RAG PIPELINE SIMULATION]
 1. Ingestion: PyMuPDF parses 250-page technical PDF into semantic chunks (500 tokens).
@@ -249,7 +250,7 @@ Opening official resume...`
       output.textContent += `[WHY HIRE ASHISH MAURYA]
 1. Production Experience: Not just tutorials—actively merged PRs to open-source frameworks (SynapseKit, LangGraph).
 2. Full Lifecycle: Builds vector search, multi-agent teams, and Dockerized FastAPI backends.
-3. Quantifiable Impact: Live banking segmentation on Render, containerized MLflow salary pipelines, sub-30ms TTFT RAG systems.
+3. Quantifiable Impact: Live SupplyChain ERP copilot on Vercel, banking segmentation on Render, sub-30ms TTFT RAG systems.
 4. Clean Craftsmanship: Obsessed with deterministic execution, zero hallucinations, and maintainable software.`;
     } else if (lower.includes('synapse') || lower.includes('lambda') || lower.includes('podman')) {
       output.textContent += kb.prs;
@@ -319,3 +320,5 @@ Ashish builds stateful multi-agent systems using LangGraph:
     }
   });
 }
+
+

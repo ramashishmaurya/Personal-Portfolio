@@ -70,7 +70,7 @@ Curated to showcase **exactly 2 flagship projects per domain**:
   2. *Financial Research Multi-Agent Engine* (LangGraph, Groq LLMs, Celery, Redis)
 - **Machine Learning & MLOps (2)**:
   1. *Banking Customer Segmentation & Churn* (Scikit-learn, K-Means, Streamlit, Live on Render)
-  2. *Automated Salary Prediction Pipeline* (Random Forest, XGBoost, Docker, MLflow)
+  2. *SupplyChain Copilot AI* (Next.js 14, FastAPI, PostgreSQL, Tailwind CSS, Live on Vercel)
 - **Filter Pills**:
   Users can click *All Projects (4)*, *Generative AI & Agents (2)*, or *Machine Learning (2)* to filter dynamically.
 

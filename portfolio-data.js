@@ -255,21 +255,21 @@ const PORTFOLIO_DATA = {
       demoUrl: "https://project-customer-segmentation-for-pj24.onrender.com"
     },
 
-    // --- 04. Machine Learning ---
+    // --- 04. Enterprise AI & SCM ---
     {
-      id: "salary-mlflow",
-      category: "ml",
+      id: "supplychain-copilot",
+      category: "ai",
       metaNumber: "04 / 04",
-      metaDomain: "MLOPS & PREDICTIVE MODELING",
-      title: "Job Salary Prediction & MLflow",
-      desc: "End-to-end containerized machine learning pipeline predicting market salaries with high accuracy based on role, location, and seniority. Integrated MLflow for experiment tracking, hyperparameter logging, and model registry.",
-      role: "MLOps Engineer",
-      image: "Customer_Churn_Prediction_Models_in_Machine_Learning.png",
-      badges: ["MLOps Pipeline"],
-      browserUrl: "salary-mlflow-pipeline.app",
-      tags: ["Random Forest", "XGBoost", "MLflow", "Docker", "Streamlit", "Scikit-learn"],
-      githubUrl: "https://github.com/ramashishmaurya",
-      demoUrl: null
+      metaDomain: "ENTERPRISE ERP & AGENTIC AI",
+      title: "SupplyChain Copilot AI",
+      desc: "Enterprise-grade Supply Chain & ERP intelligence command center combining deterministic mathematical risk engines, human-in-the-loop purchase order workflows, and guarded LLM tool calling with zero raw SQL execution.",
+      role: "AI & Full-Stack Engineer",
+      image: "supplychain.png",
+      badges: ["Live on Vercel", "HITL Guarded"],
+      browserUrl: "supply-chain-erp-command-center-fro-one.vercel.app",
+      tags: ["Next.js 14", "FastAPI", "Python", "SQLAlchemy", "PostgreSQL", "Tailwind CSS"],
+      githubUrl: "https://github.com/ramashishmaurya/Supply-Chain-ERP-Command-Center",
+      demoUrl: "https://supply-chain-erp-command-center-fro-one.vercel.app/"
     }
   ],
 
@@ -343,7 +343,7 @@ Environment Status: Production-Ready.`,
     why_hire: `[EVALUATION] Why Ashish Maurya is a Top AI Engineering Candidate:
 1. Production Experience: Not just tutorials—actively merged PRs to open-source frameworks (SynapseKit: AWS Lambda execution, Podman sandboxes).
 2. Full Lifecycle: Builds everything from vector embeddings & LangGraph multi-agent teams to Dockerized FastAPI production backends.
-3. Quantifiable Impact: Deployed live banking customer segmentation on Render, containerized MLflow salary pipelines, and real-time RAG document assistants.
+3. Quantifiable Impact: Live SupplyChain ERP copilot on Vercel, banking customer segmentation on Render, and real-time RAG document assistants.
 4. Clean Craftsmanship: Obsessed with deterministic execution, zero hallucinations, low latency, and readable maintainable code.`,
 
     projects: `[FEATURED PRODUCTION SYSTEMS]
@@ -361,9 +361,10 @@ Environment Status: Production-Ready.`,
    • Built production-grade async AWS Lambda execution tools and daemonless Podman security sandboxes.
    • Result: Merged into core framework, enabling secure untrusted code evaluation.
 
-4. MLflow Automated Salary Prediction System
-   • End-to-end MLOps pipeline tracking regression models, hyperparameters, and artifact metrics.
-   • Stack: Python, MLflow, Docker, Scikit-learn.`,
+4. SupplyChain Copilot AI (Enterprise ERP Intelligence)
+   • Deterministic supply chain risk engine with guarded LLM copilot and HITL PO workflow.
+   • Stack: Next.js 14, FastAPI, Python, PostgreSQL, SQLAlchemy, Tailwind CSS.
+   • Live: https://supply-chain-erp-command-center-fro-one.vercel.app/`,
 
     prs: `[OPEN-SOURCE ECOSYSTEM HUBS & MERGED CONTRIBUTIONS]
 • Total Impact: 7+ Merged PRs across 3 Production Frameworks (1,916+ Lines)
